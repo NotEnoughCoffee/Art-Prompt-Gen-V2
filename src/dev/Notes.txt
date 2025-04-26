@@ -1,0 +1,25 @@
+
+Changes 4/25/2025:
+-Created and updated Selection and Category Records
+-Determined formatting for Excel sheet that data will be read from
+-Created method to Read Excel file (still needs testing) and create the Categories HashMap
+
+Changes 4/26/2025:
+-Add error checking to rarity to ensure it is a # and is between 1-3
+-minor edits, cleaned up some existing code
+-Setup functions to randomly select a Category from the Map.
+-Half setup function to randomly pick a selection from within a Category
+
+Todo:
+-Add error checking to read function and test with actual Excel file.
+ -setup excel file with categories from V1 project (add a few test cases as well)
+ -confirm code works with the Excel file as expected, and test randomizer functionality
+-Add error checking to the formatting function to notify of issues
+-Setup Selection randomizer functionality for using rarity system
+ - 1 = normal, 2 = rare, 3 = super_rare
+ -
+-create a text class for text formatting
+  -potentially include a memory array to store the 'rolls'
+
+-potentially implement rolls class in another classes to use its methods via user input instead of dumping it all under the rolls class
+
