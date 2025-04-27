@@ -10,16 +10,30 @@ Changes 4/26/2025:
 -Setup functions to randomly select a Category from the Map.
 -Half setup function to randomly pick a selection from within a Category
 
-Todo:
--Add error checking to read function and test with actual Excel file.
- -setup excel file with categories from V1 project (add a few test cases as well)
- -confirm code works with the Excel file as expected, and test randomizer functionality
--Add error checking to the formatting function to notify of issues
+Changes 4/27/2025:
 -Setup Selection randomizer functionality for using rarity system
- - 1 = normal, 2 = rare, 3 = super_rare
- -
--create a text class for text formatting
-  -potentially include a memory array to store the 'rolls'
+-Created FormatText utility class for all text formatting functions.
+ -set up error checking and number detection
+-updated goals
 
--potentially implement rolls class in another classes to use its methods via user input instead of dumping it all under the rolls class
+Todo:
+-Rolls class:
+  -possibly add external storage for rejected rolls in rarity check so no option is rejected more than 20 times in a row (reset counter upon selection) -> store in a map<selection.name(),count> (string,int) that ?updates an external file? each time a selection is accepted (before rollSelection returns the name? is that a lot of processing? OR maybe less taxing at ?program close?
+  -Would autoload as a map as part of Roll constructor
+  -potentially make a memory array to also store the previous 'rolls' (only for while program is running, only storing up to 20 or so);
+-Add error checking to read function and test with actual Excel file.
+ -setup Excel file with categories from V1 project (add a few test cases as well)
+ -confirm code works with the Excel file as expected, and test randomizer functionality
+-Utilize rolls class functions in a new (Challenge) class that will delegate the rolls being made and combine the results with the FormatText class to return the output message of the results
 
+Long Todo:
+-update GUI, Buttons, KeyInput and UIText Classes.
+ -add key-press functionality
+ -add on-screen buttons (with click detection) for same functions.
+ -change application screen size and scaling
+ -figure out how to refresh the screen when keys/buttons are pressed to display new rolls or other info
+
+-determine challenge types, if a 'custom' mode is feasible (users would be able to alter number of categories rolled, select/disable categories loaded into the program (Categories need an "enabled" boolean), and potentially change weighted odds. Don't forget a reset button
+
+-create program background art, button designs, and any other visuals.
+-maybe look into creating visual effects (screen transitions)

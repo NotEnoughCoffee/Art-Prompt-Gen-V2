@@ -6,7 +6,6 @@ public class Main {
 
     public static void main(String[] args) {
         Window.open();
-        rolls.initialSetup();
 
 
 //        HashMap<String,Category> mapTest = new HashMap<>();
