@@ -38,7 +38,7 @@ public class Rolls { //aside from testing file input, i think this class is func
                     masterCatMap.put(catName, new Category(catName, new ArrayList<>()));
                 }
 
-                List<Selection> currentCatList = masterCatMap.get(catName).selections();
+                List<Selection> currentCatList = masterCatMap.get(catName).selections;
                 //extracts category list from hashmap
 
                 for (int i = 2; i < splitLine.length; i++) {
@@ -51,12 +51,12 @@ public class Rolls { //aside from testing file input, i think this class is func
             System.out.println("Main Categories File could not be read: Check fileLocation and/or filetype");
         }
     }
-    public String rollSelection(Category category) {
-        List<Selection> selections = category.selections();
+    public Selection rollSelection(Category category) {
+        List<Selection> selections = category.selections;
         if (selections.isEmpty()) {
             //checks that list is not empty
-            System.out.println("Selection list for: " + category.name() + " is empty");
-            return "n/a";
+            System.out.println("Selection list for: " + category.name + " is empty");
+            return new Selection(category.name, "invalid", 1);
         } else {
             Selection randomSelection = null;
             for (int i = 0; i < 5; i++) {
@@ -65,15 +65,32 @@ public class Rolls { //aside from testing file input, i think this class is func
                     break;
                 }
             } //adds weight to random selection choice, attempts 5 times max.
-            return randomSelection.name();
+            return randomSelection;
         }
     }
     public Category rollCategory() {
         //Randomly Selects a Category from the Map
         List<String> keys = new ArrayList<>(masterCatMap.keySet());
         String randomKey = keys.get(random.nextInt(keys.size()));
-        return masterCatMap.get(randomKey);
+        Category choice;
+        do {
+            choice = masterCatMap.get(randomKey);
+        }while(!choice.enabled); //if category is disabled, choice will be rerolled.
+
+        return choice; //disable choice via challenge roll types? to prevent repeats from same category
     }
+
+    public void allCatEnable() {
+        //***** Add checks here for any user defined disable categories.
+        masterCatMap.forEach((k,v) -> catEnable(v));
+    }
+    public void catEnable(Category category) {
+        category.enabled = true;
+    }
+    public void catDisable(Category category) {
+        category.enabled = false;
+    }
+
     private boolean rarityPass(Selection selection) {
         return switch (selection.rarity()) {
             case 1 -> true;

@@ -34,6 +34,9 @@ Long Todo:
  -figure out how to refresh the screen when keys/buttons are pressed to display new rolls or other info
 
 -determine challenge types, if a 'custom' mode is feasible (users would be able to alter number of categories rolled, select/disable categories loaded into the program (Categories need an "enabled" boolean), and potentially change weighted odds. Don't forget a reset button
+-- would need to consider a lower limit based on how challenge rolls work, and potentially disable rolls, or detect the number of categories available and re-enable the categories if all options are disabled. (WHILE RETAINING USER SELECTIONS STAY DISABLE)
+ - maybe just add a second boolean lol
+ - and a external memory storage for disabled category choices! haha
 
 -create program background art, button designs, and any other visuals.
 -maybe look into creating visual effects (screen transitions)

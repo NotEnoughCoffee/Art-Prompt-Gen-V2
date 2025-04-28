@@ -2,8 +2,6 @@ package dev.tg;
 
 public class Main {
 
-    static Rolls rolls = new Rolls();
-
     public static void main(String[] args) {
         Window.open();
 

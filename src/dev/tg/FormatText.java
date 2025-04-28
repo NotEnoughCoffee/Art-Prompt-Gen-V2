@@ -5,8 +5,13 @@ final public class FormatText {
 
 
     //unsure of other methods needed, most likely something for formatting the results output text.
-    //an aOrAn method
 
+    static String aOrAn(String s) {
+        return switch(String.valueOf(s.charAt(0)).toUpperCase()) {
+            case "A", "E", "I", "O", "U" -> "an " + s;
+            default -> "a " + s;
+        };
+    }
     static String titleCaps(String title) {
         //ensures text formatting for specific elements are unified by capitalizing the first letter of every word.
         String[] multiWord;
