@@ -1,4 +1,6 @@
 package dev.tg;
 
-public record RollMemory(String challengeRolled, Selection[] selections) {
+import java.util.List;
+
+public record RollMemory(String challengeRolled, List<Selection> selections) {
 }

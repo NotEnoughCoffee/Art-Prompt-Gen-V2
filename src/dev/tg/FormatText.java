@@ -6,6 +6,13 @@ final public class FormatText {
 
     //unsure of other methods needed, most likely something for formatting the results output text.
 
+//    static String outputChoice (Selection choice) {
+//        StringBuilder line = new StringBuilder();
+//        line.append("Category: ").append(choice.category).append(nL).append(nL);
+//        line.append(aOrAn(choice.name));
+//        // I don't think i need this
+//        return String.valueOf(line);
+//    }
     static String aOrAn(String s) {
         return switch(String.valueOf(s.charAt(0)).toUpperCase()) {
             case "A", "E", "I", "O", "U" -> "an " + s;

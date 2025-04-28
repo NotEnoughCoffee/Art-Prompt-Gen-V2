@@ -1,6 +1,7 @@
 package dev.tg;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -8,13 +9,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class Rolls { //aside from testing file input, i think this class is functionally done.
+public class Rolls extends FileLoader { //aside from testing file input, i think this class is functionally done.
     public HashMap<String, Category> masterCatMap = new HashMap<>(10);
     //Master HashMap that contains all categories (and their Selection Lists)
-    String fileLocation = "/filename.exe"; //update with actual file name when added
+    String fileLocation = "/dataStorage/CategoryMap.csv"; //Data Storage Location for Category Map
+    Long CSVLastModified;
+    public HashMap<String,Integer> passFilter = new HashMap<>(); //Logs how many times each selection has been passed
+    //needs a method to load from file below
+    String passFilterFileLocation = "/dataStorage/PassFilter.txt"; //Data Storage Location for Rarity Passes
     Random random = new Random();
     public Rolls() {
         loadCategoryMap();
+        loadPassFilter();
     }
     public void loadCategoryMap() {
 
@@ -29,7 +35,12 @@ public class Rolls { //aside from testing file input, i think this class is func
             while (bufferedReader.readLine() != null) {
                 String line = bufferedReader.readLine();
                 String[] splitLine = line.split(",");
-                //***double check this, not sure if regex is a comma with an Excel file
+
+
+                //move above to a separate function. (and buffered reader closer from below)
+                //below is added to a for loop and does not need the try/catch right?
+
+
                 String catName = FormatText.titleCaps(splitLine[0]);
                 int rating = verifyRating(splitLine[1], catName);
 
@@ -50,6 +61,48 @@ public class Rolls { //aside from testing file input, i think this class is func
         } catch (Exception e) {
             System.out.println("Main Categories File could not be read: Check fileLocation and/or filetype");
         }
+    }
+    public void loadPassFilter() {
+        try {
+            InputStream inputFile = getClass().getResourceAsStream(passFilterFileLocation);
+            assert inputFile != null;
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputFile));
+            File file = new File(fileLocation); //for checking lastModified -> move out of try catch
+
+            while(bufferedReader.readLine() != null) {
+                String line = bufferedReader.readLine();
+                String[] split = line.split(",");
+
+                //you have to specify that split[1] is only on the first item of the first 'line' in the list
+                //and an if statement in the loop below to accept the first item of subsequent lines?
+
+                if(split[1] != null) {
+                    if(file.exists()) {
+                        CSVLastModified = file.lastModified();
+                        long loggedLastModified = Long.parseLong(split[1]);
+                        if(CSVLastModified != loggedLastModified) {
+                            //CSV file was updated and pass filter remain empty (ie resetting to match current data)
+                            break;
+                        }
+                    } else {
+                        System.out.println("Main Categories File does not exist");
+                    }
+                }
+                //data matches, and pass filter will be loaded
+                for(int i = 2; i < split.length; i+=2) {
+                    //starts after LAST_MODIFIED, long,
+                    passFilter.put(split[i], Integer.valueOf(split[i + 1]));
+                    //any passes stored in file are loaded into the array.
+                }
+            }
+            bufferedReader.close();
+        } catch (Exception e) {
+            System.out.println("Pass Filter unable to load");
+        }
+    }
+    public void savePassFilter() {
+        //placeholder for saving the passFilter info on program close
+        //unsure how to do that currently
     }
     public Selection rollSelection(Category category) {
         List<Selection> selections = category.selections;
@@ -91,15 +144,65 @@ public class Rolls { //aside from testing file input, i think this class is func
         category.enabled = false;
     }
 
+    private int filterCheck(Selection selection, boolean pass) {
+        String name = selection.name();
+        if(passFilter.containsKey(name)) {
+            if(passFilter.get(name) >= 20) {
+                passFilter.put(name, 0); //resets pass count
+                return 1; //Selection is accepted because it was rejected 20+ times
+            } else {
+                if(pass) {
+                    passFilter.put(name, 0); //count reset due to pass.
+                }else {
+                    passFilter.put(name, (passFilter.get(name)) + 1); //count incremented due to fail.
+                }
+                return 0;
+            }
+        } else {
+            //selection doesn't exist in filter and is added.
+            if (pass) {
+                passFilter.put(name, 0); //count set to 0 due to immediate pass.
+            } else {
+                passFilter.put(name, 1);
+                return 2;
+            }
+        }
+        return -77;
+    } //untested
     private boolean rarityPass(Selection selection) {
-        return switch (selection.rarity()) {
-            case 1 -> true;
-            case 2 -> random.nextInt(5) < 3; // odds = 3/5
-            case 3 -> random.nextInt(15) < 3; // odds = 1/5
+        boolean pass = true;
+
+        switch (selection.rarity()) {
+            case 1 -> { return true; }
+
+            case 2 -> { // "RARE" -> odds = 3/5
+                pass = random.nextInt(5) < 3;
+                int flag = filterCheck(selection, pass);
+                if (flag == 1) {
+                    return true;
+                } else {
+                    if(flag < 0) {
+                        System.out.println("Error with filterCheck");
+                    }
+                    return pass;
+                }
+            }
+
+            case 3 -> { // "SUPER_RARE" -> odds = 1/5
+                pass = random.nextInt(15) < 3;
+                int flag = filterCheck(selection, pass);
+                if (flag == 1) {
+                    return true;
+                } else {
+                    if(flag < 0) {
+                        System.out.println("Error with filterCheck");
+                    }
+                    return pass;
+                }
+            }
             default -> throw new IllegalStateException("Unexpected value: " + selection.rarity());
-        };
-        //***Add future functionality to store rejected options in an external file to keep track of multiple rejections to guarantee it is picked on the 20-25th attempt (and reset). Will need to find a way to check your file's last date updated and 'clear memory if it has changed? (this ensures any update to category file will clear the memory for any long-term issues (unlikely in a program this small))
-    }
+        }
+    } //untested
     private static int verifyRating(String number, String catName) {
         //Verifies that parsed 'rating' is a number, and is within the range 1-3.
         int rating;
@@ -119,6 +222,5 @@ public class Rolls { //aside from testing file input, i think this class is func
         } //ensure rating is within range of 1-3
 
         return rating;
-    }
-
+    } //untested
 }

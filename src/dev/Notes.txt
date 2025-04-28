@@ -15,6 +15,15 @@ Changes 4/27/2025:
 -Created FormatText utility class for all text formatting functions.
  -set up error checking and number detection
 -updated goals
+-Created Challenge Class
+
+
+Changes 4/28/2025
+- updated challenge class for more generalization
+- planned out initial interface layout
+- added a passFilter which loads from a text file (and intended to overwrite the text file on program close)
+- passFilter will be used to auto pass anything the filter has kicked out 20 or more times so that things will show up eventually.
+
 
 Todo:
 -Rolls class:
@@ -25,6 +34,9 @@ Todo:
  -setup Excel file with categories from V1 project (add a few test cases as well)
  -confirm code works with the Excel file as expected, and test randomizer functionality
 -Utilize rolls class functions in a new (Challenge) class that will delegate the rolls being made and combine the results with the FormatText class to return the output message of the results
+
+- Pass Filter File Notes:
+ first String, #, pair is going to be "LAST_MODIFIED" and a long that represents the last time the cat map file was updated, and will be ignored when loaded into the pass filter map
 
 Long Todo:
 -update GUI, Buttons, KeyInput and UIText Classes.
@@ -40,3 +52,35 @@ Long Todo:
 
 -create program background art, button designs, and any other visuals.
 -maybe look into creating visual effects (screen transitions)
+    - think like JackBox games with vibrant color/high contrast with shaking and fun transitions
+
+
+
+---------------------------------------------
+            Sample Screen Format:
+---------------------------------------------
+
+
+--------------------------------------------
+             {Type} Art Prompt:                  : clickable button as well that changes challenge type
+ -------------------------------------------
+                     |
+     Category        |       "    "              : main screen area split into as many divisions as there are rolls?
+                     |                           : could do horizontal splits, or randomized effects
+     choice          |                           : I would like a visual effect that looks like it is scrolling through a category
+                     |
+                     |
+ -------------------------------------------
+    Save | Back | Roll | Forward | Settings      : tied to key presses as well
+ -------------------------------------------
+
+Settings:
+ - a ReadMe page/popup button
+ - Ability to enable/disable categories (all displayed
+ - Run check on category map (displays error messages about text formatting issues from Excel file)
+ - Clear memory array of recent rolls
+ - Custom Challenge Settings:  // MUCH LATER, Low importance
+     - # of categories rolled
+     - # of times each category is rolled (for multiple results for each)
+     - a checkbox to enable/disable the category after it is rolled
+     - print lists (displays all options available in each category (with or without rating?)
