@@ -17,26 +17,26 @@ Changes 4/27/2025:
 -updated goals
 -Created Challenge Class
 
-
 Changes 4/28/2025
 - updated challenge class for more generalization
 - planned out initial interface layout
 - added a passFilter which loads from a text file (and intended to overwrite the text file on program close)
 - passFilter will be used to auto pass anything the filter has kicked out 20 or more times so that things will show up eventually.
+- created and tested csv. after troubleshooting file loads in correctly.
+- ran a test on challenge class and default challenge appears to be working
+- MAJOR progress. file reading and writing now works, passFilter fully implemented and seems functional
+- ***Filtering set up for Modifiers -> though some inefficiencies, string references need to be converted to a field***
 
+
+CSV TODO:
+-categories need updating
+-Settings needs to be split to 3 levels
+-Time needs level 3
+-Modifier Roll needs its own method.
 
 Todo:
--Rolls class:
-  -possibly add external storage for rejected rolls in rarity check so no option is rejected more than 20 times in a row (reset counter upon selection) -> store in a map<selection.name(),count> (string,int) that ?updates an external file? each time a selection is accepted (before rollSelection returns the name? is that a lot of processing? OR maybe less taxing at ?program close?
-  -Would autoload as a map as part of Roll constructor
-  -potentially make a memory array to also store the previous 'rolls' (only for while program is running, only storing up to 20 or so);
--Add error checking to read function and test with actual Excel file.
- -setup Excel file with categories from V1 project (add a few test cases as well)
- -confirm code works with the Excel file as expected, and test randomizer functionality
--Utilize rolls class functions in a new (Challenge) class that will delegate the rolls being made and combine the results with the FormatText class to return the output message of the results
-
-- Pass Filter File Notes:
- first String, #, pair is going to be "LAST_MODIFIED" and a long that represents the last time the cat map file was updated, and will be ignored when loaded into the pass filter map
+-a memory array to also store the previous 'rolls' (only for while program is running, only storing up to 20 or so);
+-Utilize rolls class functions in a new (Challenge) class that will delegate the rolls being made and combine the results with the FormatText class to return the output message of the results // may not be needed as interface design has changed
 
 Long Todo:
 -update GUI, Buttons, KeyInput and UIText Classes.
