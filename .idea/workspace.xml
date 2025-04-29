@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="general progress before implementing FileLoader">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/dataStorage/CategoryMap.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" afterDir="false" />
+    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="Major Progress">
+      <change afterPath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ThemeGenerator2.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ThemeGenerator2.0.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/FileLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/FileLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/tg/Challenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Challenge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/tg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/tg/RollMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/RollMemory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/tg/Rolls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Rolls.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="main-project-reconfig" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -72,7 +69,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main-project-reconfig",
+    "git-widget-placeholder": "main-GUI-Feature",
     "last_opened_file_path": "C:/Users/andre/IdeaProjects/ThemeGenerator2.0/src",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
@@ -154,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745857286759</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Major Progress">
+      <option name="closed" value="true" />
+      <created>1745888514082</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1745888514082</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,7 +179,8 @@
     <MESSAGE value="error checking / cleanup" />
     <MESSAGE value="general progress" />
     <MESSAGE value="general progress before implementing FileLoader" />
-    <option name="LAST_COMMIT_MESSAGE" value="general progress before implementing FileLoader" />
+    <MESSAGE value="Major Progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="Major Progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

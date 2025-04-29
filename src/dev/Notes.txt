@@ -27,6 +27,13 @@ Changes 4/28/2025
 - MAJOR progress. file reading and writing now works, passFilter fully implemented and seems functional
 - ***Filtering set up for Modifiers -> though some inefficiencies, string references need to be converted to a field***
 
+Changes 4/29/2025
+- minor fixes and implemented roll memory save file with load/save methods.
+- added search functions to the rolls class to obtain the category or selection from a string input.
+
+
+
+
 
 CSV TODO:
 -categories need updating
@@ -35,10 +42,7 @@ CSV TODO:
 -Modifier Roll needs its own method.
 
 Todo:
--a memory array to also store the previous 'rolls' (only for while program is running, only storing up to 20 or so);
--Utilize rolls class functions in a new (Challenge) class that will delegate the rolls being made and combine the results with the FormatText class to return the output message of the results // may not be needed as interface design has changed
-
-Long Todo:
+-general code cleanup
 -update GUI, Buttons, KeyInput and UIText Classes.
  -add key-press functionality
  -add on-screen buttons (with click detection) for same functions.

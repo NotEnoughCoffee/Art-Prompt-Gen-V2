@@ -8,10 +8,10 @@ import java.util.Random;
 
 public class Rolls extends FileLoader { // tested - works as intended (but have not implemented file loader or ability to save the pass filter
     public HashMap<String, Category> masterCatMap = new HashMap<>(10); // Contains all Categories and their Selections
-    String CatMapFileLocation = "/dataStorage/CategoryMap.csv"; //Data Storage Location for Category Map
-    Long CSVLastModified;
+    final private String CatMapFileLocation = "/dataStorage/CategoryMap.csv"; //Data Storage Location for Category Map
+    private Long CSVLastModified;
     public HashMap<String,Integer> passFilter = new HashMap<>(); //Logs how many times each selection has been passed
-    String passFilterFileLocation = "/dataStorage/PassFilter.txt"; //Data Storage Location for Pass Filter
+    final private String passFilterFileLocation = "/dataStorage/PassFilter.txt"; //Data Storage Location for Pass Filter
     Random random = new Random();
     public Rolls() {
         loadCategoryMap();
@@ -76,7 +76,31 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
         saveInfo.append("LAST_MODIFIED,").append(CSVLastModified).append(",");
         passFilter.forEach( (k,v) -> saveInfo.append(k).append(",").append(v).append(",") );
         saveFile(passFilterFileLocation, String.valueOf(saveInfo));
-    } //Pass Filter in theory saves, need to test
+    } //tested and works as intended
+
+    public Selection searchCatMap(String selectionName) {
+        Selection find = null;
+
+        for(Category cat : masterCatMap.values()) {
+            if( (find = searchCategory(cat, selectionName)) != null) {
+            break;
+            }
+        }
+        if(find == null) {
+            System.out.println("Error with searchCatMap, unable to find Selection: " + selectionName);
+        }
+        return find;
+    }
+    private Selection searchCategory(Category category, String selectionName) {
+        Selection find = null;
+        for(Selection selection : category.selections) {
+            if(selectionName.equalsIgnoreCase(selection.name())) {
+                find = selection;
+                break;
+            }
+        }
+        return find;
+    }
     public Selection rollSelection(Category category) {
         List<Selection> selections = category.selections;
         if (selections.isEmpty()) {
@@ -115,6 +139,12 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
     public void catDisable(Category category) {
         category.enabled = false;
     } // untested
+    public void catDisable(Selection selection) {
+        catDisable(getCategory(selection));
+    }
+    public Category getCategory(Selection selection) {
+        return masterCatMap.get(selection.name());
+    }
     private int filterCheck(Selection selection, boolean pass) {
         String name = selection.name();
         if(passFilter.containsKey(name)) {
@@ -142,7 +172,7 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
         }
     } //tested - works as intended
     private boolean rarityPass(Selection selection) {
-        boolean pass = true;
+        boolean pass;
 
         switch (selection.rarity()) {
             case 1 -> { return true; }

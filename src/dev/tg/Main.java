@@ -1,9 +1,9 @@
 package dev.tg;
 
 public class Main {
-    static Rolls rolls = new Rolls(); //creates Category map, grants access to roll methods
+    //static Rolls rolls = new Rolls(); //creates Category map, grants access to roll methods
 
-    //static Challenge test = new Challenge();
+    static Challenge test = new Challenge();
 
     public static void main(String[] args) {
         //Window.open();
@@ -29,6 +29,10 @@ public class Main {
 //            throw new RuntimeException(e);
 //        }
 
+        //System.out.println(test.rollMemory);
+        //test.saveMemory();
+        //test.clearRollMemory();
+        //System.out.println(test.rollMemory);
 
 
 //        File file = new File("./res/dataStorage/CategoryMap.csv");
