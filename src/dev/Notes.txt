@@ -30,35 +30,96 @@ Changes 4/28/2025
 Changes 4/29/2025
 - minor fixes and implemented roll memory save file with load/save methods.
 - added search functions to the rolls class to obtain the category or selection from a string input.
+- spent 2 hours chasing a easily fixed bug yay
+
+Change 4/30/2025
+- Cleaned up progress list below and laid out next steps
+- ran tests on various elements
 
 
+TODO Cleaned-up:
+General ->
+- Code cleanup, move and package related classes, remove unused code from tests and unused features.
+- Consider future plans for project: is the best format for this a computer or phone app?
+   - as a phone app this could potentially reach more people
+   - as a desktop app, users would likely have more control, or the ability to give users more control is easier to work with
+   - Phone app can be a long term extended goal.
+- Need to update ReadMe with actual instructions (can wait until customization features are working)
+- Figure out how to set up screen splits based on number of results from the challenge.
+   - needs to be able to accept multiple rolls and roll types.
+   - need to consider if multiple options are chosen from one category
+   - consider how this would be displayed on screen before making graphics **
+       - testing that text displays on screen is the priority.
+- Pass Filter should probably be its own class (very low priority)
+- File saving methods should probably update on program close. Having a or multiple saves with every roll might be excessive. One method could probably handle all saves together (mid priority)
+
+CSV File -> (low priority)
+- need to update categories and add more choices, as well as reconfigure 'rarity' choices.
+- perhaps set up a secondary file, either as a way to run further tests for edge cases, or implement a way to load in or use a different file. (low priority, requires GUI and other elements to be implemented first)
+
+Rolls Class -> (low priority)
+- Special Modifier roll needs to be added here or on challenge class to utilize special mods on certain challenges
+- Create a final static string for "Modifiers" and replace the repeated use of that throughout the class.
+- Enable All method needs a use, and to be updated with checks for 'user disabled' categories once GUI implemented
+- may need to find a way to give categories certain tags to ensure certain methods (like modifiers) work if changed by the user. As it is, I am not happy with how modifiers is directly called out in the code, and could have break points
+- Combine overloaded catDisable methods into one if not used via user disable features (later)
+- Search CatMap method may need to be reworked? It currently has to look through every category in the map, and through every category's entire List<Selection> until it finds the matching Selection.
+   - unsure if there is a better way to search since the only relevant information will be the Selection name; unless we re-work the save file feature to include category name for less taxing search (low priority)
+
+Challenges Class ->
+- Navigation methods need to be set up once key input is working to allow users to actually navigate through roll memory
+-
+
+GUI ->
+- determine window/application size // Currently set to 800x600
+   - look into making multiple sizes for potential
+- reassess Window class.
+- reassess draw method and how screen updating will work when challenges are rolled (after buttons are working)
+
+- KeyInput (**)
+   - figure out controls layout and all functions that need or will need keybindings
+
+- Buttons (*)
+   - figure out how to make clickable spots in the window to act as the buttons
+   - see if this can be a singular graphic
+   - make the 'Challenge type' at the top a clickable button (or drop menu?)
+      - make this scroll through the options, including any user options if the preset is 'enabled'
+
+- UIText (?)
+   - reassess class and see what needs to be done after graphics are setup.
 
 
+- Graphics (***)
+   - set up scaling (low priority, application can stay one size for now)
+   - Create a basic template of the screen in clip studio
+   - Create a basic template of a settings page?
+   - Create basic graphics to highlight the challenge results
+   - Add a method to FileLoader to load images ***
 
-CSV TODO:
--categories need updating
--Settings needs to be split to 3 levels
--Time needs level 3
--Modifier Roll needs its own method.
+- Better Graphics (low low priority)
+   - Make background graphics nice
+   - add animation effects (how? maybe via animated gifs?)
+   - Screen transitions
+   - a 'rolling' effect that displays other category items
 
-Todo:
--general code cleanup
--update GUI, Buttons, KeyInput and UIText Classes.
- -add key-press functionality
- -add on-screen buttons (with click detection) for same functions.
- -change application screen size and scaling
- -figure out how to refresh the screen when keys/buttons are pressed to display new rolls or other info
-
--determine challenge types, if a 'custom' mode is feasible (users would be able to alter number of categories rolled, select/disable categories loaded into the program (Categories need an "enabled" boolean), and potentially change weighted odds. Don't forget a reset button
--- would need to consider a lower limit based on how challenge rolls work, and potentially disable rolls, or detect the number of categories available and re-enable the categories if all options are disabled. (WHILE RETAINING USER SELECTIONS STAY DISABLE)
- - maybe just add a second boolean lol
- - and a external memory storage for disabled category choices! haha
-
--create program background art, button designs, and any other visuals.
--maybe look into creating visual effects (screen transitions)
-    - think like JackBox games with vibrant color/high contrast with shaking and fun transitions
+-Settings (after GUI Setup)
+   - Create a user settings 'page'
+   - Make toggleable options to enable/disable categories -> add an extra field along with this that defaults to enabled.
+   - A save file for that so user preferences stay the same after program close
+   - Make a custom rolls template (and potentially a save file to save a handful of 'user presets' (low priority) )
+      - with checkboxes for enable/disable category after it is rolled
+   - A reset button? (to default program settings)
+   - A clear RollMemory button (to clear and overwrite the save file) (not for PassFilter though)
+   - A ReadMe Link (that displays a scrollable text window within the program)
+   - An Error Checker (to look at various elements and print out a log of any flags
+      - to find issues with category/selection syntax, output incorrect values for rarity system
+      - any other potential detections needed based on user input related issues
 
 
+"Finished" Elements:
+- Selection
+- Category // baring minor future update for user disable feature
+- RollMemory
 
 ---------------------------------------------
             Sample Screen Format:
@@ -77,14 +138,3 @@ Todo:
  -------------------------------------------
     Save | Back | Roll | Forward | Settings      : tied to key presses as well
  -------------------------------------------
-
-Settings:
- - a ReadMe page/popup button
- - Ability to enable/disable categories (all displayed
- - Run check on category map (displays error messages about text formatting issues from Excel file)
- - Clear memory array of recent rolls
- - Custom Challenge Settings:  // MUCH LATER, Low importance
-     - # of categories rolled
-     - # of times each category is rolled (for multiple results for each)
-     - a checkbox to enable/disable the category after it is rolled
-     - print lists (displays all options available in each category (with or without rating?)

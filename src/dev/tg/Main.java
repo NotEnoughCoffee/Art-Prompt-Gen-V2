@@ -33,8 +33,9 @@ public class Main {
         //test.saveMemory();
         //test.clearRollMemory();
         //System.out.println(test.rollMemory);
-
-
+        for(int i = 0; i < 12; i++){
+            test.runDefaultChallenge();
+        }
 //        File file = new File("./res/dataStorage/CategoryMap.csv");
 //        System.out.println(file.getAbsoluteFile().exists());
 

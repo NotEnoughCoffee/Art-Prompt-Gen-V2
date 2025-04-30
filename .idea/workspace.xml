@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="Major Progress">
-      <change afterPath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" afterDir="false" />
+    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="minor improvements and rollMemory implementation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/tg/Challenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Challenge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/tg/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/tg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/tg/RollMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/RollMemory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/tg/Rolls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Rolls.java" afterDir="false" />
@@ -159,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745888514082</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="minor improvements and rollMemory implementation">
+      <option name="closed" value="true" />
+      <created>1745949140630</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1745949140630</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -180,7 +189,8 @@
     <MESSAGE value="general progress" />
     <MESSAGE value="general progress before implementing FileLoader" />
     <MESSAGE value="Major Progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="Major Progress" />
+    <MESSAGE value="minor improvements and rollMemory implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor improvements and rollMemory implementation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

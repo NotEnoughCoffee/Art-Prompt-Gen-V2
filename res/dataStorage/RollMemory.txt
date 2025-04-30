@@ -1,4 +1,21 @@
-Test,Raccoon,Red
-Test #2,Car,Boat
-Test #3,Raccoon,Red
-Test #4,Car,Boat
+Daily Challenge,City,High Tech Future
+Daily Challenge,Forest,Cave Painting
+Daily Challenge,Squirrel,Singing
+Daily Challenge,Atomic Age,Bunny
+Daily Challenge,Maned Wolf,Alien
+Daily Challenge,Faire,Golden Age Of Piracy
+Daily Challenge,Monochrome,Fennec
+Daily Challenge,Golden Age Of Piracy,Baking
+Daily Challenge,Horse,Complementary Colors
+Daily Challenge,Boat,Graffiti Style
+Daily Challenge,Art From Around The World,Medieval Period
+Daily Challenge,Woodworking,Caribou
+Daily Challenge,Silver,Casting
+Daily Challenge,Midnight,Expressionism
+Daily Challenge,Koala,Skiing
+Daily Challenge,Super Flat,Afternoon
+Daily Challenge,Viking Age,Sculpture
+Daily Challenge,Minimalism,Guard
+Daily Challenge,Four Colors,Psychedelic Art
+Daily Challenge,Beaver,Glitter
+16

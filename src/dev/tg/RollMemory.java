@@ -8,7 +8,7 @@ public record RollMemory(String challengeRolled, List<Selection> selections) {
         for(Selection selection : selections) {
             selectionList.append(selection).append(",");
         }
-        selectionList.setLength(selectionList.length() -1);
+        selectionList.setLength(selectionList.length());
         return String.valueOf(selectionList);
     }
     @Override
