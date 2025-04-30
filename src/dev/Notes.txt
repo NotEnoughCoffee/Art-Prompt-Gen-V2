@@ -35,6 +35,10 @@ Changes 4/29/2025
 Change 4/30/2025
 - Cleaned up progress list below and laid out next steps
 - ran tests on various elements
+- created sample background image to layout spacing of application UI elements
+- created load image function to load the background file, and refactored UIText to become DisplayUI to handle both text and image elements
+- created buttons and began implementing functionality. - need to reconfigure Run Challenge method to include more options
+- button now rolls a basic challenge (which is not displayed, but at least logged in save file)
 
 
 TODO Cleaned-up:
@@ -85,22 +89,22 @@ GUI ->
    - make the 'Challenge type' at the top a clickable button (or drop menu?)
       - make this scroll through the options, including any user options if the preset is 'enabled'
 
-- UIText (?)
-   - reassess class and see what needs to be done after graphics are setup.
-
+- DisplayUI (?)
+   - needs work, will handle loading images and text from 'rolls'
 
 - Graphics (***)
    - set up scaling (low priority, application can stay one size for now)
-   - Create a basic template of the screen in clip studio
-   - Create a basic template of a settings page?
+      - change the way elements are arranged based on desktop/phone app
+   - Create a basic template of a settings page? (low priority)
    - Create basic graphics to highlight the challenge results
-   - Add a method to FileLoader to load images ***
 
 - Better Graphics (low low priority)
    - Make background graphics nice
    - add animation effects (how? maybe via animated gifs?)
    - Screen transitions
-   - a 'rolling' effect that displays other category items
+   - a 'rolling' effect that displays other category items - graphics could just be as simple as a slot machine
+   - special effect to signify that it was a rare roll
+   - special effect if it was skipped 10 times
 
 -Settings (after GUI Setup)
    - Create a user settings 'page'
@@ -138,3 +142,48 @@ GUI ->
  -------------------------------------------
     Save | Back | Roll | Forward | Settings      : tied to key presses as well
  -------------------------------------------
+
+ Screen UI Pixel Location Notes from sample file:
+
+ Border is 25px around edge of screen
+ There is a 10px border around each element
+ a 2px border depicts the exact edge of each element
+
+ Screen width: 800
+ Screen height: 600
+
+ Layer:
+ Border as base
+
+ Then element border as a Rect at:
+ 25x25y to 775x25y
+ 25x575y to 775x575y
+ (unknown if this even needs to be defined)
+
+ Title Bar Button Border:
+ 35x35y to 765x35y
+ 35x140y to 765x140y
+
+ Roll Screen Border:
+ 35x150y to 765x150y
+ 35x500y to 765x500y
+
+ Roll Screen Category Segment:
+ 35x150y to 765x150y
+ 35x260y to 765x260y
+
+ Buttons:
+ 35x510y to 165x510y
+ 35x565y to 165x565y
+
+ +150 for x for each button
+
+ Screen Middle:
+ 400x
+ 325y
+
+ screen 1/3
+ 243 + 35 x
+
+ screen 2/3
+ 486+35

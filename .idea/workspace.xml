@@ -4,15 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="minor improvements and rollMemory implementation">
+    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="Ran testing on small elements to confirm things are working as expected / Todo List cleanup">
+      <change afterPath="$PROJECT_DIR$/res/dataStorage/access/ChallengeList.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/graphics/BackgroundSampleLayout.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dev/tg/ClickableButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/tg/Buttons.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/tg/Challenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Challenge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/tg/FileLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/FileLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/tg/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/tg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/RollMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/RollMemory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/Rolls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Rolls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/tg/UIText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/DisplayUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/tg/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +86,7 @@
       <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\res\graphics" />
       <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\src\dev\tg" />
       <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\res\dataStorage" />
     </key>
@@ -168,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745949140630</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Ran testing on small elements to confirm things are working as expected / Todo List cleanup">
+      <option name="closed" value="true" />
+      <created>1746021139680</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1746021139680</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -190,7 +205,8 @@
     <MESSAGE value="general progress before implementing FileLoader" />
     <MESSAGE value="Major Progress" />
     <MESSAGE value="minor improvements and rollMemory implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor improvements and rollMemory implementation" />
+    <MESSAGE value="Ran testing on small elements to confirm things are working as expected / Todo List cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ran testing on small elements to confirm things are working as expected / Todo List cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

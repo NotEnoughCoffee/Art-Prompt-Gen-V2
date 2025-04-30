@@ -1,18 +1,24 @@
 package dev.tg;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Challenge extends FileLoader {
+    public static String name = "Default Challenge";
     static Rolls rolls = new Rolls(); //creates Category map, grants access to roll methods
     final private static String memoryFileLocation = "/dataStorage/RollMemory.txt";
     List<RollMemory> rollMemory = new ArrayList<>(20); //stores previous rolls
     private int previousMemoryCounter; //loads last memoryCounter location
     private int memoryCounter = 0; //tracks the location for memory to be stored //-1 offsets first stored memory
     private int memoryCursor = 0; //tracks user location while browsing previous rolls
+    final private static String challengeListFileLocation = "/dataStorage/access/ChallengeList.txt";
+    public static List<String[]> challengesList;
+    static int challengeIndex = 0;
     public Challenge() {
         clearRollMemory(); //initiate memory and loads list with null
         loadMemory();
+        loadChallengeList();
     }
     private void loadMemory() {
         List<String[]> memoryLoad = loadFile(memoryFileLocation);
@@ -73,12 +79,26 @@ public class Challenge extends FileLoader {
             rollMemory.add(i, null);
         }
     } //tested and works as intended
+    private void loadChallengeList() {
+        challengesList = loadFile(challengeListFileLocation);
+        Challenge.name = challengesList.get(0)[0];
+    }
+    public List<Selection> runChallenge() {
+        String[] currentChallenge = challengesList.get(challengeIndex);
+        try {
+            return runChallenge(currentChallenge[0], Integer.parseInt(currentChallenge[1]), Boolean.parseBoolean(currentChallenge[2]));
+        }catch (Exception e) {
+            System.out.println("Error Reading Challenge From Challenge List: " + Arrays.toString(currentChallenge));
+            return null;
+        }
+    }
     public List<Selection> runDefaultChallenge() {
         //Default challenge which picks 2 options, each from a unique enabled category.
-        return runChallenge(2, false);
+        return runChallenge("Default Test Challenge",2, false);
     } // for testing and initial setup
-    public List<Selection> runChallenge(int selectionCount, boolean allowCategoryRepeats) {
+    public List<Selection> runChallenge(String name, int selectionCount, boolean allowCategoryRepeats) {
         //runs the challenge with specified parameters and returns a list of the results
+        Challenge.name = name;
         List<Selection> choices = new ArrayList<>();
         for(int i = 0; i < selectionCount; i++){
             if(allowCategoryRepeats) {
@@ -87,7 +107,7 @@ public class Challenge extends FileLoader {
                 choices.add(i, rollAndDisable());
             }
         }
-        addToRollMemory("Daily Challenge", choices); //roll added to memory
+        addToRollMemory(name, choices); //roll added to memory
         saveMemory();
         reEnableCats(choices); //re-enables all selected cats (regardless if they were disabled)
         return choices;

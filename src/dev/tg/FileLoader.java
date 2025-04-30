@@ -1,8 +1,11 @@
 package dev.tg;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FileLoader {
     final protected List<String[]> loadFile(String fileName){
@@ -43,5 +46,18 @@ public class FileLoader {
         } catch (IOException e) {
             System.out.println("Error Writing to File:" + fileName);
         }
+    }
+    final protected BufferedImage loadImage(String filename) {
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(filename)));
+        }catch (IOException e) {
+            System.out.println("Unable to load Image: " + filename);
+        }
+        return image;
+    }
+
+    final protected void saveScreen() {
+        //Implement later for save function to snapshot a screen grab of the challenge elements to output folder
     }
 }

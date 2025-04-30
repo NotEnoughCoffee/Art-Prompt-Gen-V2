@@ -6,8 +6,9 @@ public class Main {
     static Challenge test = new Challenge();
 
     public static void main(String[] args) {
-        //Window.open();
-
+        Window.open();
+        System.out.println(Challenge.challengeIndex);
+        System.out.println(Challenge.challengesList.size());
         //rolls.masterCatMap.forEach( (k,v) -> System.out.println(v) );  //category map loads correctly.
 
         //test.runDefaultChallenge().forEach(System.out::println); this sometimes causes program to hangup, not sure of source
@@ -33,9 +34,9 @@ public class Main {
         //test.saveMemory();
         //test.clearRollMemory();
         //System.out.println(test.rollMemory);
-        for(int i = 0; i < 12; i++){
-            test.runDefaultChallenge();
-        }
+//        for(int i = 0; i < 12; i++){
+//            test.runDefaultChallenge();
+//        }
 //        File file = new File("./res/dataStorage/CategoryMap.csv");
 //        System.out.println(file.getAbsoluteFile().exists());
 
