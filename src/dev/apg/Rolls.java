@@ -1,4 +1,7 @@
-package dev.tg;
+package dev.apg;
+
+import dev.apg.utility.FileLoader;
+import dev.apg.utility.FormatText;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -8,10 +11,10 @@ import java.util.Random;
 
 public class Rolls extends FileLoader { // tested - works as intended (but have not implemented file loader or ability to save the pass filter
     public HashMap<String, Category> masterCatMap = new HashMap<>(10); // Contains all Categories and their Selections
-    String CatMapFileLocation = "/dataStorage/CategoryMap.csv"; //Data Storage Location for Category Map
-    Long CSVLastModified;
+    final private String CatMapFileLocation = "/dataStorage/CategoryMap.csv"; //Data Storage Location for Category Map
+    private Long CSVLastModified;
     public HashMap<String,Integer> passFilter = new HashMap<>(); //Logs how many times each selection has been passed
-    String passFilterFileLocation = "/dataStorage/PassFilter.txt"; //Data Storage Location for Pass Filter
+    final private String passFilterFileLocation = "/dataStorage/PassFilter.txt"; //Data Storage Location for Pass Filter
     Random random = new Random();
     public Rolls() {
         loadCategoryMap();
@@ -36,7 +39,7 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
                     //adds each 'Selection' in the current buffered line directly to the Selection List inside the hashmap via mutability
                 }
             }
-        } //tested and works
+        } //tested and works as intended
     private void loadPassFilter() {
         File file = new File("./res" + CatMapFileLocation);
         List<String[]> filter = loadFile(passFilterFileLocation);
@@ -70,13 +73,41 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
                 System.out.println("Main Categories File does not exist");
             }
         }
-    } //Pass Filter in theory loads, but nothing saved to it to fully test
+    } //tested and works as intended
     private void savePassFilter() {
         StringBuilder saveInfo = new StringBuilder();
         saveInfo.append("LAST_MODIFIED,").append(CSVLastModified).append(",");
         passFilter.forEach( (k,v) -> saveInfo.append(k).append(",").append(v).append(",") );
         saveFile(passFilterFileLocation, String.valueOf(saveInfo));
-    } //Pass Filter in theory saves, need to test
+    } //tested and works as intended
+
+    public Selection searchCatMap(String selectionName) {
+        //searches the category map with only a string of the selection name, and returns the selection
+        //returns null if not found
+        Selection find = null;
+
+        for(Category cat : masterCatMap.values()) {
+            if( (find = searchCategory(cat, selectionName)) != null) {
+            break;
+            }
+        }
+        if(find == null) {
+            System.out.println("Error with searchCatMap, unable to find Selection: " + selectionName);
+        }
+        return find;
+    } //tested and works as intended. maybe clunky
+    private Selection searchCategory(Category category, String selectionName) {
+        //searches a category with a string name to return the Selection of the same name
+        //or returns null if not found
+        Selection find = null;
+        for(Selection selection : category.selections) {
+            if(selectionName.equalsIgnoreCase(selection.name())) {
+                find = selection;
+                break;
+            }
+        }
+        return find;
+    } //tested and works as intended
     public Selection rollSelection(Category category) {
         List<Selection> selections = category.selections;
         if (selections.isEmpty()) {
@@ -94,7 +125,7 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
             savePassFilter();
             return randomSelection;
         }
-    } //tested
+    } //tested and works as intended
     public Category rollCategory() {
         //Randomly Selects a Category from the Map
         List<String> keys = new ArrayList<>(masterCatMap.keySet());
@@ -102,8 +133,8 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
         do {
             choice = masterCatMap.get(keys.get(random.nextInt(keys.size())));
         }while(!choice.enabled); //if category is disabled, choice will be rerolled.
-        return choice; //disable choice via challenge roll types? to prevent repeats from same category
-    } //tested -works as intended
+        return choice;
+    } //tested and works as intended
     public void allCatEnable() {
         //***** Add checks here for any user defined disable categories.
         masterCatMap.forEach((k,v) -> catEnable(v));
@@ -111,10 +142,16 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
     } //untested
     public void catEnable(Category category) {
         category.enabled = true;
-    } // in theory works
+    } //tested and works as intended
     public void catDisable(Category category) {
         category.enabled = false;
-    } // untested
+    } // tested - works as expected
+    public void catDisable(Selection selection) {
+        catDisable(getCategory(selection));
+    } //tested - works as expected
+    public Category getCategory(Selection selection) {
+        return masterCatMap.get(selection.Category());
+    } //tested - works as intended
     private int filterCheck(Selection selection, boolean pass) {
         String name = selection.name();
         if(passFilter.containsKey(name)) {
@@ -142,7 +179,7 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
         }
     } //tested - works as intended
     private boolean rarityPass(Selection selection) {
-        boolean pass = true;
+        boolean pass;
 
         switch (selection.rarity()) {
             case 1 -> { return true; }

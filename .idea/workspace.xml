@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="general progress before implementing FileLoader">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/dataStorage/CategoryMap.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" afterDir="false" />
+    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="implemented Unit Tests structure and some base tests for previously completed key elements. Repackaged classes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ThemeGenerator2.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ThemeGenerator2.0.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/FileLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/FileLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/Rolls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Rolls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/Challenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/Challenge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/DisplayUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/DisplayUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/MainScreenButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/MainScreenButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/PromptButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/PromptButton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="main-project-reconfig" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -72,7 +71,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main-project-reconfig",
+    "git-widget-placeholder": "main-GUI-Feature",
     "last_opened_file_path": "C:/Users/andre/IdeaProjects/ThemeGenerator2.0/src",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
@@ -82,11 +81,15 @@
       <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\res\graphics" />
       <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\src\dev\tg" />
       <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\res\dataStorage" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dev.tg.buttons" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -154,7 +157,63 @@
       <option name="project" value="LOCAL" />
       <updated>1745857286759</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Major Progress">
+      <option name="closed" value="true" />
+      <created>1745888514082</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1745888514082</updated>
+    </task>
+    <task id="LOCAL-00009" summary="minor improvements and rollMemory implementation">
+      <option name="closed" value="true" />
+      <created>1745949140630</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1745949140630</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Ran testing on small elements to confirm things are working as expected / Todo List cleanup">
+      <option name="closed" value="true" />
+      <created>1746021139680</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1746021139680</updated>
+    </task>
+    <task id="LOCAL-00011" summary="testing new GUI features">
+      <option name="closed" value="true" />
+      <created>1746047078367</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1746047078367</updated>
+    </task>
+    <task id="LOCAL-00012" summary="SCREEEEEEEEEEEEEM">
+      <option name="closed" value="true" />
+      <created>1746069112584</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1746069112584</updated>
+    </task>
+    <task id="LOCAL-00013" summary="implemented Unit Tests structure and some base tests for previously completed key elements. Repackaged classes.">
+      <option name="closed" value="true" />
+      <created>1746107831097</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1746107831097</updated>
+    </task>
+    <task id="LOCAL-00014" summary="implemented Unit Tests structure and some base tests for previously completed key elements. Repackaged classes.">
+      <option name="closed" value="true" />
+      <created>1746107864763</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1746107864763</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,7 +233,13 @@
     <MESSAGE value="error checking / cleanup" />
     <MESSAGE value="general progress" />
     <MESSAGE value="general progress before implementing FileLoader" />
-    <option name="LAST_COMMIT_MESSAGE" value="general progress before implementing FileLoader" />
+    <MESSAGE value="Major Progress" />
+    <MESSAGE value="minor improvements and rollMemory implementation" />
+    <MESSAGE value="Ran testing on small elements to confirm things are working as expected / Todo List cleanup" />
+    <MESSAGE value="testing new GUI features" />
+    <MESSAGE value="SCREEEEEEEEEEEEEM" />
+    <MESSAGE value="implemented Unit Tests structure and some base tests for previously completed key elements. Repackaged classes." />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented Unit Tests structure and some base tests for previously completed key elements. Repackaged classes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

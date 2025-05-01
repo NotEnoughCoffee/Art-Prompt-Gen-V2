@@ -1,4 +1,4 @@
-package dev.tg;
+package dev.apg.utility;
 final public class FormatText {
 
     static String nL = "\n"; //new line
@@ -19,7 +19,7 @@ final public class FormatText {
             default -> "a " + s;
         };
     }
-    static String titleCaps(String title) {
+    public static String titleCaps(String title) {
         //ensures text formatting for specific elements are unified by capitalizing the first letter of every word.
         String[] multiWord;
         StringBuilder formatted = new StringBuilder();

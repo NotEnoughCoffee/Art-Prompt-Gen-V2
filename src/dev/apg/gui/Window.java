@@ -1,4 +1,4 @@
-package dev.tg;
+package dev.apg.gui;
 
 import javax.swing.*;
 
@@ -7,7 +7,7 @@ public class Window {
     public static void open() {
         //creates window
         JFrame window = new JFrame();
-        window.setTitle("Daily Art Theme Generator");
+        window.setTitle("Art Prompt Generator V2");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
 
@@ -17,9 +17,5 @@ public class Window {
 
         window.pack(); //sets size of window to GUI element
         window.setVisible(true);
-
-        //may need to run a setup method on GUI class to load buttons and other elements
-
-
     }
 }
