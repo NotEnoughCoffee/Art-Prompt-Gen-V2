@@ -18,6 +18,7 @@ public class Challenge extends FileLoader {
     public static List<String[]> challengesList;
     public static int challengeIndex = 0;
     public  List<Selection> currentRollMemory;
+    public boolean modifierActive = false;
     public Challenge() {
         clearRollMemory(); //initiate memory and loads list with null
         loadMemory();
@@ -87,21 +88,26 @@ public class Challenge extends FileLoader {
         challengesList = loadFile(challengeListFileLocation);
         Challenge.name = challengesList.get(0)[0];
     }
+
+
+
+
     public void runChallenge() {
         String[] currentChallenge = challengesList.get(challengeIndex);
         try {
-            runChallenge(currentChallenge[0], Integer.parseInt(currentChallenge[1]), Boolean.parseBoolean(currentChallenge[2]));
+            runChallengeNEW(currentChallenge[0], Integer.parseInt(currentChallenge[1]), Boolean.parseBoolean(currentChallenge[2]));
         }catch (Exception e) {
             System.out.println("Error Reading Challenge From Challenge List: " + Arrays.toString(currentChallenge));
         }
     }
+    //OLD CODE - TO BE REPLACED //
     public void runDefaultChallenge() {
         //Default challenge which picks 2 options, each from a unique enabled category.
         runChallenge("Default Test Challenge",3, false);
     } // for testing and initial setup
     public void runChallenge(String name, int selectionCount, boolean allowCategoryRepeats) {
         //runs the challenge with specified parameters and returns a list of the results
-        Challenge.name = name;
+        Challenge.name = name; //name is assigned via overloaded method inserting currentChallenge[0] as the new name
         List<Selection> choices = new ArrayList<>();
         for(int i = 0; i < selectionCount; i++){
             if(allowCategoryRepeats) {
@@ -117,14 +123,76 @@ public class Challenge extends FileLoader {
     } //tested and works
     //***** Needs to be reconfigured once GUI implemented
     //Output list not tested
+    //END REPLACE//
+
+
+    //RUN CHALLENGE REWRITE//
+
+    //new Unit Test Challenge
+    @SuppressWarnings("unused")
+    public void challenge_Run_Challenge_NEW_Test() {
+        runChallengeNEW("Test NEW", 4,false);
+    }
+
+
+    //Randomized Challenge - takes a count of number of selections to be chosen to randomly pick a challenge, with no category input
+    public void runChallengeNEW(String name,  int selectionCount,boolean allowCategoryRepeats) {
+        //New Base challenge roll
+            //get and set challenge name + repeats boolean
+            //a modifier boolean? -> needs entire method to roll
+            //THIS: get a selection count (to run random selections) -> and build a category list off that and then roll those in the bellow method
+                //AND: Overloaded method to get a Category List that rolls each of those selections
+        List<Category> chosenCategories = new ArrayList<>();
+        for(int i = 0; i < selectionCount; i++){
+            if(allowCategoryRepeats) {
+                chosenCategories.add(i,rolls.rollCategory());
+            }else{
+                chosenCategories.add(i,rolls.rollCategory());
+                chosenCategories.get(i).enabled = false;
+            }
+        }
+        runChallengeNEW(name, chosenCategories);
+    }
+
+    //Specified Challenge - takes a List of Categories to and rolls those specific category
+    public void runChallengeNEW(String name, List<Category> chosenCategories) {
+        Challenge.name = name;
+        Selection mod = runModifiers();
+        List<Selection> choices = new ArrayList<>();
+        for(Category category : chosenCategories) {
+            choices.add(rolls.rollSelection(category));
+        }
+        if(mod != null) {
+            choices.add(mod);
+        }
+        addToRollMemory(name,choices);
+        setCurrentMemory();
+        saveMemory();
+        reEnableCats(choices);
+    }
+
+    public Selection runModifiers() {
+        //Checks if Modifiers are Active and if passes weighted roll, a modifier will be returned. otherwise null is returned.
+        try {
+            return modifierActive && rolls.rarityPassSuperRare() ? rolls.rollSelection(rolls.masterCatMap.get(rolls.mods)) : null;
+        } catch (Exception e) {
+            System.out.println("Error with runModifiers, function skipped");
+            return null;
+        }
+    }
+
+
+
+
+
+
 
     public void reEnableCats(List<Selection> selections) {
-        for(Selection s : selections) {
-            rolls.catEnable(rolls.getCategory(s));
+        for(Selection selection : selections) {
+            rolls.catEnable(rolls.getCategory(selection));
         }
     } //tested and works as intended
     //use two below methods with a navigation method to display previous or next rolls based on the memory location?
-
     public void setCurrentMemory() {
         if(memoryCursor >20) {
             memoryCounter = 0;
@@ -184,4 +252,6 @@ public class Challenge extends FileLoader {
         //category remains enabled after selection is made.
         return rolls.rollSelection(rolls.rollCategory());
     } //tested and works as intended
+
+
 }

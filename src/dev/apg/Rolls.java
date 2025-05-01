@@ -16,6 +16,7 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
     public HashMap<String,Integer> passFilter = new HashMap<>(); //Logs how many times each selection has been passed
     final private String passFilterFileLocation = "/dataStorage/PassFilter.txt"; //Data Storage Location for Pass Filter
     Random random = new Random();
+    final public String mods = "Modifiers";
     public Rolls() {
         loadCategoryMap();
         loadPassFilter();
@@ -28,7 +29,7 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
                 if (!masterCatMap.containsKey(catName)) {
                     //if the Category does not exist in the Map, it is created:
                     masterCatMap.put(catName, new Category(catName, new ArrayList<>()));
-                    if (catName.equalsIgnoreCase("Modifiers")) {
+                    if (catName.equalsIgnoreCase(mods)) {
                         //disables modifiers category (this is for special rolls)
                         masterCatMap.get(catName).enabled = false;
                     }
@@ -138,7 +139,7 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
     public void allCatEnable() {
         //***** Add checks here for any user defined disable categories.
         masterCatMap.forEach((k,v) -> catEnable(v));
-        masterCatMap.get("Modifiers").enabled = false;
+        masterCatMap.get(mods).enabled = false;
     } //untested
     public void catEnable(Category category) {
         category.enabled = true;
@@ -154,7 +155,10 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
     } //tested - works as intended
     private int filterCheck(Selection selection, boolean pass) {
         String name = selection.name();
-        if(passFilter.containsKey(name)) {
+        if(name == null) {
+            System.out.println("Selection name = null");
+            return -1;
+        } else if(passFilter.containsKey(name)) {
             if(passFilter.get(name) >= 10) {
                 passFilter.put(name, 0); //resets pass count
                 return 1; //Selection is accepted because it was rejected 20+ times
@@ -209,9 +213,16 @@ public class Rolls extends FileLoader { // tested - works as intended (but have 
                     return pass;
                 }
             }
+            case 4 -> { // "MOD_RARE -> odds =
+                return random.nextInt(16) < 2;
+            }
             default -> throw new IllegalStateException("Unexpected value: " + selection.rarity());
         }
     } //tested - works as intended
+    public boolean rarityPassSuperRare() {
+        //Adds weighted logic to return a "Mod Rare" chance to pass
+        return rarityPass(new Selection(null,null,4));
+    }
     private static int verifyRating(String number, String catName) {
         //Verifies that parsed 'rating' is a number, and is within the range 1-3.
         int rating;
