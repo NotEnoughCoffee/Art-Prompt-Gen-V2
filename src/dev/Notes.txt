@@ -48,6 +48,18 @@ Change 4/30/2025
 - repackaged classes to be with related features
 - added unit testing structure to main class and cleaned up old test code
 - added unit testing for some previously completed key features
+- temporay fix for display text for testing purposes until further updates made to the challenges class
+
+:: Today's Problems:
+ - make all button text show up Or just add that to the graphics file to save headache?
+       - title bar would still need to be handled independently due to changing text display and expected user input
+ - implement screen/challenge save feature to save snapshot of specified area to a screenshot folder
+
+ -Potentially make a settings page graphic and implement that button (settings page does not need to be functional itself)
+ -once all the buttons work, display text, and roll text is displayed better:
+       - reconfigure some of the challenge roll methods to work with user input and add Modifier Rolls functions
+
+
 
 TODO Cleaned-up:
 General ->

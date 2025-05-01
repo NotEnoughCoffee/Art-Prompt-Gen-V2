@@ -1,21 +1,21 @@
-Test Challenge,Griffin,Bright,Red,Midnight
-Default Test Challenge,Three Colors,Disk Golf
-Test Challenge,Jungle,Beach,News Anchor,Art From Around The World
-Test Challenge,German Shepherd,Pop Art,Magical Realm,Silver
-Test Challenge,Bear,Victorian Era,Sunrise,Space Travel
-Test Challenge,Vibrant,Kangaroo,Hot Springs,Street Art
-Test Challenge,Ancient Art,Shopping,Five Colors,Dog
-Test Challenge,Toucan,Magical Realm,Sunrise,Medieval Period
-Test Challenge,Red,Muted,Gecko,Party
-Test Challenge,Magical Realm,Billiards Hall,Traveling,Art From Around The World
-Test Challenge,Orange,Muted,Dancing,Two Tone
-Test Challenge,Underground Lake,Medieval Period,Two Tone,Blue
-Test Challenge,Car,Dragon,Sports Field,Victorian Era
-Test Challenge,Fantasy,Minimalism,Midnight,Gold
-Test Challenge,Moose,Meerkat,Star Gazing,Racing
-Test Challenge,Bountiful Overgrown Future,Fauvism,Watercolor,Metallic
-Test Challenge,Sunrise,Ballista,Triadic Colors,Pop Art
-Test Challenge,Fox,Fauvism,Temple,Foraging
-Test Challenge,Pool,Gecko,Cottage,Dystopian Future
-Test Challenge,Baroque,Woods,Corn Field,Sculpting
-2
+Torpedo Challenge,Triadic Colors,Washing Car
+A lot of Stuff,Bountiful Overgrown Future,Horse,Crayon,Forest,Jungle,Psychedelic Art,Tanuki
+Test Challenge,Surrealism,Cave,Baroque,Searching
+Test Challenge,Renaissance,Board Games,Baseball,Color Pencil
+Test Challenge,Two Tone,High Tech Future,Glow In The Dark,Exploring
+Test Challenge,Fennec,Dystopian Future,Victorian Era,Lion
+Test Challenge,Ink,Shipwreck,Owl,Paranoid
+Test Challenge,Graffiti Style,Bear,Shield,Woods
+Test Challenge,Red,Bathroom,Industrial Revolution,Two Tone
+Test Challenge,Raccoon,City,Silver,Bear
+Test Challenge,Cosplaying,Abstract Art,Classic Antiquity,Relaxing
+Llama Challenge,Two Tone,Scifi,Genet,Beach,Sunset
+Torpedo Challenge,Donkey,Watercolor
+A lot of Stuff,Climbing,Black And White,Hoarder Room,Dystopian,Graffiti Style,Opossum,Medieval Period
+A lot of Stuff,Repairing,Dragon,Silver,Singing,Scuba Diving,Five Colors,Classic Antiquity
+Test Challenge,Five Colors,Donkey,Bank,Baking
+A lot of Stuff,Medieval Period,Ferret,Hoarder Room,Tonalism,Faire,Medieval Period,Space
+A lot of Stuff,Three Colors,Surrealism,Two Tone,Triadic Colors,Psychedelic Art,Chameleon,Bountiful Overgrown Future
+Test Challenge,Kangaroo,City,Warm Colors,Playing Instruments
+Llama Challenge,Paranoid,Crater,Evening,Stoat,Triadic Colors
+13

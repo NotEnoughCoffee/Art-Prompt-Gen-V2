@@ -56,9 +56,10 @@ public class Challenge extends FileLoader {
             StringBuilder saveLine = new StringBuilder();
             String[] line = memory.toString().split(",");
             for(String word : line) {
-                if (word.equalsIgnoreCase("null")) {
-                    word = null;
-                } else if (word.contains("[")) {
+                if (word.contains("null")) {
+                    continue;
+                }
+                if (word.contains("[")) {
                     word = word.substring(1);
                     saveLine.append(word).append(",");
                 } else if (word.contains("]")) {
@@ -124,7 +125,13 @@ public class Challenge extends FileLoader {
     } //tested and works as intended
     //use two below methods with a navigation method to display previous or next rolls based on the memory location?
 
-    private void setCurrentMemory() {
+    public void setCurrentMemory() {
+        if(memoryCursor >20) {
+            memoryCounter = 0;
+        }
+        if(memoryCursor < 0) {
+            memoryCursor = 19;
+        }
         currentRollMemory = new ArrayList<>(rollMemory.get(memoryCursor).selections());
     }
     public void forwardMemory() {

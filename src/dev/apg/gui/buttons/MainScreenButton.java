@@ -10,5 +10,6 @@ public class MainScreenButton extends ClickableButton {
     @Override
     protected void doTheThing() {
         System.out.println("CLICK");
+        //gui.refresh();
     }
 }

@@ -60,9 +60,11 @@ public class GUI extends JPanel {
 
     private String formatRollTextOutput() {
         StringBuilder string = new StringBuilder();
-
+        if(challenge.currentRollMemory == null) {
+        challenge.setCurrentMemory();
+        }
         for(Selection selection : challenge.currentRollMemory) {
-            string.append(selection.Category()).append(": ").append(selection.name()).append("\n");
+            string.append(selection.Category()).append(": ").append(selection.name()).append(";;");
         }
         return String.valueOf(string);
     }

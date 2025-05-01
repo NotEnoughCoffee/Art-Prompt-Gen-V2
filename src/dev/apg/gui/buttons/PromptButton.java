@@ -12,10 +12,12 @@ public class PromptButton extends ClickableButton {
     @Override
     protected void doTheThing() {
         int max = Challenge.challengesList.size() - 1;
-                    if(Challenge.challengeIndex++ >= max) {
-                        Challenge.challengeIndex = 0;
-                        System.out.println(Challenge.challengeIndex);
-                    }
-                    DisplayUI.promptButtonText = currentChallengeName;
+        if(Challenge.challengeIndex++ >= max) {
+            Challenge.challengeIndex = 0;
+            System.out.println(Challenge.challengeIndex);
+        }
+        DisplayUI.promptButtonText = currentChallengeName;
+        gui.refresh();
+
     }
 }

@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="SCREEEEEEEEEEEEEM">
+    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="implemented Unit Tests structure and some base tests for previously completed key elements. Repackaged classes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/DisplayUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/DisplayUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/Challenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/Challenge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/DisplayUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/DisplayUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/MainScreenButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/MainScreenButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/PromptButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/PromptButton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +197,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746069112584</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="implemented Unit Tests structure and some base tests for previously completed key elements. Repackaged classes.">
+      <option name="closed" value="true" />
+      <created>1746107831097</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1746107831097</updated>
+    </task>
+    <task id="LOCAL-00014" summary="implemented Unit Tests structure and some base tests for previously completed key elements. Repackaged classes.">
+      <option name="closed" value="true" />
+      <created>1746107864763</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1746107864763</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -220,7 +238,8 @@
     <MESSAGE value="Ran testing on small elements to confirm things are working as expected / Todo List cleanup" />
     <MESSAGE value="testing new GUI features" />
     <MESSAGE value="SCREEEEEEEEEEEEEM" />
-    <option name="LAST_COMMIT_MESSAGE" value="SCREEEEEEEEEEEEEM" />
+    <MESSAGE value="implemented Unit Tests structure and some base tests for previously completed key elements. Repackaged classes." />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented Unit Tests structure and some base tests for previously completed key elements. Repackaged classes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
