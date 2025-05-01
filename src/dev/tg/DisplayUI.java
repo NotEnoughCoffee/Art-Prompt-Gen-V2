@@ -40,9 +40,9 @@ public class DisplayUI extends FileLoader{
     }
     public void drawText() {
         resetUIText();
-        uiText = "Roll text is displayed here";
-        //placeholder for roll text method on roll class
 
+        uiText = gui.rollText;
+        System.out.println(uiText + "in draw text");
         getFontCenterX(uiText);
         y = gui.screenHeight/2; //this centers text vertically, may need to be changed to center text within the top x amount of pixels to leave room for buttons
 

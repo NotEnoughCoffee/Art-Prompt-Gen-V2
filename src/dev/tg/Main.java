@@ -2,13 +2,12 @@ package dev.tg;
 
 public class Main {
     //static Rolls rolls = new Rolls(); //creates Category map, grants access to roll methods
-
-    static Challenge test = new Challenge();
+//    static Challenge test = new Challenge();
 
     public static void main(String[] args) {
         Window.open();
-        System.out.println(Challenge.challengeIndex);
-        System.out.println(Challenge.challengesList.size());
+//        System.out.println(Challenge.challengeIndex);
+//        System.out.println(Challenge.challengesList.size());
         //rolls.masterCatMap.forEach( (k,v) -> System.out.println(v) );  //category map loads correctly.
 
         //test.runDefaultChallenge().forEach(System.out::println); this sometimes causes program to hangup, not sure of source

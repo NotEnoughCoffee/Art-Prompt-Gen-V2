@@ -8,13 +8,14 @@ public class Challenge extends FileLoader {
     public static String name = "Default Challenge";
     static Rolls rolls = new Rolls(); //creates Category map, grants access to roll methods
     final private static String memoryFileLocation = "/dataStorage/RollMemory.txt";
-    List<RollMemory> rollMemory = new ArrayList<>(20); //stores previous rolls
+    static List<RollMemory> rollMemory = new ArrayList<>(20); //stores previous rolls
     private int previousMemoryCounter; //loads last memoryCounter location
     private int memoryCounter = 0; //tracks the location for memory to be stored //-1 offsets first stored memory
     private int memoryCursor = 0; //tracks user location while browsing previous rolls
     final private static String challengeListFileLocation = "/dataStorage/access/ChallengeList.txt";
     public static List<String[]> challengesList;
-    static int challengeIndex = 0;
+    public static int challengeIndex = 0;
+    public  List<Selection> currentRollMemory;
     public Challenge() {
         clearRollMemory(); //initiate memory and loads list with null
         loadMemory();
@@ -83,20 +84,19 @@ public class Challenge extends FileLoader {
         challengesList = loadFile(challengeListFileLocation);
         Challenge.name = challengesList.get(0)[0];
     }
-    public List<Selection> runChallenge() {
+    public void runChallenge() {
         String[] currentChallenge = challengesList.get(challengeIndex);
         try {
-            return runChallenge(currentChallenge[0], Integer.parseInt(currentChallenge[1]), Boolean.parseBoolean(currentChallenge[2]));
+            runChallenge(currentChallenge[0], Integer.parseInt(currentChallenge[1]), Boolean.parseBoolean(currentChallenge[2]));
         }catch (Exception e) {
             System.out.println("Error Reading Challenge From Challenge List: " + Arrays.toString(currentChallenge));
-            return null;
         }
     }
-    public List<Selection> runDefaultChallenge() {
+    public void runDefaultChallenge() {
         //Default challenge which picks 2 options, each from a unique enabled category.
-        return runChallenge("Default Test Challenge",2, false);
+        runChallenge("Default Test Challenge",2, false);
     } // for testing and initial setup
-    public List<Selection> runChallenge(String name, int selectionCount, boolean allowCategoryRepeats) {
+    public void runChallenge(String name, int selectionCount, boolean allowCategoryRepeats) {
         //runs the challenge with specified parameters and returns a list of the results
         Challenge.name = name;
         List<Selection> choices = new ArrayList<>();
@@ -108,9 +108,9 @@ public class Challenge extends FileLoader {
             }
         }
         addToRollMemory(name, choices); //roll added to memory
+        setCurrentMemory();
         saveMemory();
         reEnableCats(choices); //re-enables all selected cats (regardless if they were disabled)
-        return choices;
     } //tested and works
     //***** Needs to be reconfigured once GUI implemented
     //Output list not tested
@@ -121,15 +121,22 @@ public class Challenge extends FileLoader {
         }
     } //tested and works as intended
     //use two below methods with a navigation method to display previous or next rolls based on the memory location?
+
+    private void setCurrentMemory() {
+        currentRollMemory = new ArrayList<>(rollMemory.get(memoryCursor).selections());
+    }
     public void forwardMemory() {
         //moves memory location cursor forwards
         memoryCursor++;
+
+        if(memoryCursor >= 20) {
+            memoryCursor = 0;
+        }
         if(rollMemory.get(memoryCursor) == null) {
             memoryCursor = 0;
         }//brings back to beginning if noting is in the highest available memory slot
-        if(memoryCursor == 20) {
-            memoryCursor = 0;
-        }
+
+        setCurrentMemory();
     } // navigation not implemented
     public void backwardMemory() {
         //moves memory location cursor backwards
@@ -139,9 +146,10 @@ public class Challenge extends FileLoader {
                 if (rollMemory.get(i) != null) {
                     break;
                 }
-                memoryCursor = 19;
             }
+            memoryCursor = 19;
         }
+        setCurrentMemory();
 
     } // navigation not implemented
     public void addToRollMemory(String challengeRoll, List<Selection> selections) {

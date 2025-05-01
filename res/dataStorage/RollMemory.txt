@@ -1,21 +1,21 @@
-Daily Challenge,Patterned,Porcupine
-Daily Challenge,Watercolor,Bedroom
-Daily Challenge,Afternoon,Laying
-Daily Challenge,Tonalism,Sunrise
-Daily Challenge,Pixel Art,Asteroid
-Daily Challenge,Four Colors,Climbing
-Daily Challenge,High Tech Future,Pop Art
-Daily Challenge,Synchromism,Bountiful Overgrown Future
-Daily Challenge,Street Art,Border Collie
-Daily Challenge,Classic Antiquity,Glitch Art
-Daily Challenge,Complementary Colors,Ancient History
-Daily Challenge,Bath House,Triadic Colors
-Test Challenge,Glitch Art,Indoors,Guns,Triadic Colors
-Test Challenge,Forge,Atomic Age,Owl,Ancient History
-Test Challenge,Gold,Complementary Colors,Monkey,Purple
-Daily Challenge,Handball,Medieval Period
-Daily Challenge,Surfing,Distant
-Daily Challenge,Indoors,Tiger
-Daily Challenge,Vibrant,Boxing
-Daily Challenge,Glitch Art,Sheep
-15
+Test Challenge,Gambling,Cool Colors,Five Colors,Dark
+Test Challenge,Blue,Early Morning,Midnight,Daydreaming
+Test Challenge,Jungle,Beach,News Anchor,Art From Around The World
+Test Challenge,German Shepherd,Pop Art,Magical Realm,Silver
+Test Challenge,Bear,Victorian Era,Sunrise,Space Travel
+Test Challenge,Vibrant,Kangaroo,Hot Springs,Street Art
+Test Challenge,Ancient Art,Shopping,Five Colors,Dog
+Test Challenge,Toucan,Magical Realm,Sunrise,Medieval Period
+Test Challenge,Red,Muted,Gecko,Party
+Test Challenge,Magical Realm,Billiards Hall,Traveling,Art From Around The World
+Test Challenge,Orange,Muted,Dancing,Two Tone
+Test Challenge,Underground Lake,Medieval Period,Two Tone,Blue
+Test Challenge,Car,Dragon,Sports Field,Victorian Era
+Test Challenge,Fantasy,Minimalism,Midnight,Gold
+Test Challenge,Moose,Meerkat,Star Gazing,Racing
+Test Challenge,Bountiful Overgrown Future,Fauvism,Watercolor,Metallic
+Test Challenge,Sunrise,Ballista,Triadic Colors,Pop Art
+Test Challenge,Fox,Fauvism,Temple,Foraging
+Test Challenge,Pool,Gecko,Cottage,Dystopian Future
+Test Challenge,Purple,Meditating,Ink,Silver
+19

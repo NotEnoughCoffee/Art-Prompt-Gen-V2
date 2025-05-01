@@ -1,1 +1,4 @@
 Test Challenge,4,true,
+Llama Challenge,5,false,
+Torpedo Challenge,2,false,
+A lot of Stuff,7,true,

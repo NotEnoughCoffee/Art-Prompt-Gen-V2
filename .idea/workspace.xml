@@ -4,21 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="Ran testing on small elements to confirm things are working as expected / Todo List cleanup">
-      <change afterPath="$PROJECT_DIR$/res/dataStorage/access/ChallengeList.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/graphics/BackgroundSampleLayout.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dev/tg/ClickableButton.java" afterDir="false" />
+    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="testing new GUI features">
+      <change afterPath="$PROJECT_DIR$/src/dev/tg/buttons/BackButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dev/tg/buttons/ForwardButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dev/tg/buttons/MainScreenButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dev/tg/buttons/PromptButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dev/tg/buttons/RollButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dev/tg/buttons/SaveButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dev/tg/buttons/SettingsButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/Buttons.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/dataStorage/access/ChallengeList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/access/ChallengeList.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/tg/Challenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Challenge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/FileLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/FileLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/tg/ClickableButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/buttons/ClickableButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/tg/DisplayUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/DisplayUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/tg/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/tg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/UIText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/DisplayUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/tg/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/tg/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +94,9 @@
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dev.tg.buttons" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -183,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746021139680</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="testing new GUI features">
+      <option name="closed" value="true" />
+      <created>1746047078367</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1746047078367</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,7 +219,8 @@
     <MESSAGE value="Major Progress" />
     <MESSAGE value="minor improvements and rollMemory implementation" />
     <MESSAGE value="Ran testing on small elements to confirm things are working as expected / Todo List cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ran testing on small elements to confirm things are working as expected / Todo List cleanup" />
+    <MESSAGE value="testing new GUI features" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing new GUI features" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
