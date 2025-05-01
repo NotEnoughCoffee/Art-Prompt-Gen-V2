@@ -1,4 +1,4 @@
-package dev.tg;
+package dev.apg;
 import java.util.List;
 public class Category {
     //Class that contains all the Selection choices within each category

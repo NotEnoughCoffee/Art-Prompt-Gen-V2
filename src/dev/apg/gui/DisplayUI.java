@@ -1,9 +1,11 @@
-package dev.tg;
+package dev.apg.gui;
+
+import dev.apg.utility.FileLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class DisplayUI extends FileLoader{
+public class DisplayUI extends FileLoader {
     //class that displays text on top of background image
     GUI gui;
     Graphics2D g2D;
@@ -40,8 +42,7 @@ public class DisplayUI extends FileLoader{
     }
     public void drawText() {
         resetUIText();
-
-        uiText = gui.rollText;
+        setUIText(gui.rollText);
         System.out.println(uiText + "in draw text");
         getFontCenterX(uiText);
         y = gui.screenHeight/2; //this centers text vertically, may need to be changed to center text within the top x amount of pixels to leave room for buttons

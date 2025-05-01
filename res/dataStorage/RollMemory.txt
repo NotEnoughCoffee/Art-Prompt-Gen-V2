@@ -1,5 +1,5 @@
-Test Challenge,Gambling,Cool Colors,Five Colors,Dark
-Test Challenge,Blue,Early Morning,Midnight,Daydreaming
+Test Challenge,Griffin,Bright,Red,Midnight
+Default Test Challenge,Three Colors,Disk Golf
 Test Challenge,Jungle,Beach,News Anchor,Art From Around The World
 Test Challenge,German Shepherd,Pop Art,Magical Realm,Silver
 Test Challenge,Bear,Victorian Era,Sunrise,Space Travel
@@ -17,5 +17,5 @@ Test Challenge,Bountiful Overgrown Future,Fauvism,Watercolor,Metallic
 Test Challenge,Sunrise,Ballista,Triadic Colors,Pop Art
 Test Challenge,Fox,Fauvism,Temple,Foraging
 Test Challenge,Pool,Gecko,Cottage,Dystopian Future
-Test Challenge,Purple,Meditating,Ink,Silver
-19
+Test Challenge,Baroque,Woods,Corn Field,Sculpting
+2

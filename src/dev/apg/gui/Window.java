@@ -1,4 +1,4 @@
-package dev.tg;
+package dev.apg.gui;
 
 import javax.swing.*;
 

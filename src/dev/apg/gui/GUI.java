@@ -1,6 +1,8 @@
-package dev.tg;
+package dev.apg.gui;
 
-import dev.tg.buttons.*;
+import dev.apg.Challenge;
+import dev.apg.Selection;
+import dev.apg.gui.buttons.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +21,6 @@ public class GUI extends JPanel {
     KeyInput keyPressed = new KeyInput(this);
 
     public Challenge challenge = new Challenge();
-
     String rollText = "";
     public GUI() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -28,26 +29,6 @@ public class GUI extends JPanel {
         this.setFocusable(true);
         guiSetup();
     }
-
-//    private ClickableButton buildButton(String name, int x, int y, int width, int height) {
-//        if(name.contains("SB:")) { //Setting up for future settings page button functions - to be disabled at start
-//            return new ClickableButton(name, new Rectangle(x,y,width,height), false);
-//        } else {
-//            return new ClickableButton(name, new Rectangle(x, y, width, height), true);
-//        }
-//    }
-//    private void addButtons() {
-//        //I would like to do this a better way? Loop via loading a file? But not sure how to make that data secure via that method as I do not want users to have access to editing that.
-//        buttons = new ArrayList<>(List.of(
-//                buildButton("Prompt",35,35,730,105),
-//                buildButton("MainScreen",35,150,730,350),
-//                buildButton("Save",35,510,130,55),
-//                buildButton("Back",185,510,130,55),
-//                buildButton("Roll",335,510,130,55),
-//                buildButton("Forward",485,510,130,55),
-//                buildButton("Settings",635,510,130,55)
-//        ));
-//    }
 
     private void addButtons() {
         buttons = new ArrayList<>(List.of(
@@ -69,7 +50,7 @@ public class GUI extends JPanel {
         //music?
     }
 
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) { //method called when repaint() is used
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
         //calls screen painting method and casts graphic to 2D image.
@@ -91,12 +72,8 @@ public class GUI extends JPanel {
         repaint();
     }
     public void rollChallenge() {
-        // something something use this method with the repaint function to redraw the paintComponent method to update the screen with your roll on button press.
-        //
         challenge.runChallenge();
         rollText = formatRollTextOutput();
-//        System.out.println(rollText);
-//        displayUI.uiText = rollText;
         repaint();
     }
 

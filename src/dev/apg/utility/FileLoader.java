@@ -1,4 +1,4 @@
-package dev.tg;
+package dev.apg.utility;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

@@ -1,4 +1,7 @@
-package dev.tg;
+package dev.apg;
+
+import dev.apg.utility.FileLoader;
+import dev.apg.utility.FormatText;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package dev.tg.buttons;
+package dev.apg.gui.buttons;
 
 import java.awt.*;
 

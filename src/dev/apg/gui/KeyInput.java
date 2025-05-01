@@ -1,4 +1,4 @@
-package dev.tg;
+package dev.apg.gui;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

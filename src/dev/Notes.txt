@@ -39,7 +39,15 @@ Change 4/30/2025
 - created load image function to load the background file, and refactored UIText to become DisplayUI to handle both text and image elements
 - created buttons and began implementing functionality. - need to reconfigure Run Challenge method to include more options
 - button now rolls a basic challenge (which is not displayed, but at least logged in save file)
+- buttons switched to abstract class, and each button is a inheritor class to more cleanly assign independent functions
+- forward and backward buttons are able to appropriately move through the roll memory
+- result for rolls and navigation are displayed, albeit broke, but it shows up and updates!
 
+5/1/2025
+- cleaning up leftover code and notes from previous day
+- repackaged classes to be with related features
+- added unit testing structure to main class and cleaned up old test code
+- added unit testing for some previously completed key features
 
 TODO Cleaned-up:
 General ->

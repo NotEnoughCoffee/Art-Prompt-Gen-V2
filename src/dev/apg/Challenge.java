@@ -1,4 +1,6 @@
-package dev.tg;
+package dev.apg;
+
+import dev.apg.utility.FileLoader;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -94,7 +96,7 @@ public class Challenge extends FileLoader {
     }
     public void runDefaultChallenge() {
         //Default challenge which picks 2 options, each from a unique enabled category.
-        runChallenge("Default Test Challenge",2, false);
+        runChallenge("Default Test Challenge",3, false);
     } // for testing and initial setup
     public void runChallenge(String name, int selectionCount, boolean allowCategoryRepeats) {
         //runs the challenge with specified parameters and returns a list of the results

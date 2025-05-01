@@ -1,4 +1,4 @@
-package dev.tg;
+package dev.apg.utility;
 final public class FormatText {
 
     static String nL = "\n"; //new line

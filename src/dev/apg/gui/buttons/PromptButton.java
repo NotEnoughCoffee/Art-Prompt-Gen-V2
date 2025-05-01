@@ -1,7 +1,7 @@
-package dev.tg.buttons;
+package dev.apg.gui.buttons;
 
-import dev.tg.Challenge;
-import dev.tg.DisplayUI;
+import dev.apg.Challenge;
+import dev.apg.gui.DisplayUI;
 
 import java.awt.*;
 
