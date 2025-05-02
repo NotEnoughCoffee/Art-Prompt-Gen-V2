@@ -8,6 +8,7 @@ final public class FormatText {
     //GENERIC TEXT FORMATTING TOOLS//
     @SuppressWarnings("unused")
     static String nL = "\n"; //new line
+    @SuppressWarnings("unused")
     static String aOrAn(String s) {
         return switch(String.valueOf(s.charAt(0)).toUpperCase()) {
             case "A", "E", "I", "O", "U" -> "an " + s;
@@ -51,7 +52,8 @@ final public class FormatText {
         StringBuilder string = new StringBuilder();
         for(Selection selection : currentRollMemory) {
             string.append(selection.Category()).append(": ");
-            string.append(aOrAn(selection.name())).append(";;");
+            //string.append(aOrAn(selection.name())).append(";;");
+            string.append(selection.name()).append(";;");
         }
         return String.valueOf(string);
     }

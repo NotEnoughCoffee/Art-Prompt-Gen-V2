@@ -11,12 +11,17 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public abstract class ClickableButton extends JPanel implements MouseListener, KeyListener {
-    public static GUI gui = null;
-    protected Rectangle buttonDimensions;
-    public boolean enabled;
-    public String name;
-    public int button1, button2;
+
+    //BASIC SETUP//
     protected static String currentChallengeName = Challenge.name;
+    public String name;
+    public boolean enabled;
+    protected int button1, button2;
+    protected Rectangle buttonDimensions;
+
+    public static GUI gui = null;
+
+    //INITIALIZATION//
     public ClickableButton(String name, Rectangle buttonDimensions, boolean enabled) {
         this.name = name;
         this.buttonDimensions = buttonDimensions;
@@ -37,7 +42,6 @@ public abstract class ClickableButton extends JPanel implements MouseListener, K
     public void keyPressed(KeyEvent e) {
         if(e != null && (e.getKeyCode() == button1 || e.getKeyCode() == button2 )) {
             doTheThing();
-            System.out.println("You Pressed a button: " + button1 + "/" + button2);
         }
     }
 

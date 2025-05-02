@@ -30,7 +30,7 @@ Changes 4/28/2025
 Changes 4/29/2025
 - minor fixes and implemented roll memory save file with load/save methods.
 - added search functions to the rolls class to obtain the category or selection from a string input.
-- spent 2 hours chasing a easily fixed bug yay
+- spent 2 hours chasing an easily fixed bug yay
 
 Change 4/30/2025
 - Cleaned up progress list below and laid out next steps
@@ -39,7 +39,7 @@ Change 4/30/2025
 - created load image function to load the background file, and refactored UIText to become DisplayUI to handle both text and image elements
 - created buttons and began implementing functionality. - need to reconfigure Run Challenge method to include more options
 - button now rolls a basic challenge (which is not displayed, but at least logged in save file)
-- buttons switched to abstract class, and each button is a inheritor class to more cleanly assign independent functions
+- buttons switched to abstract class, and each button is an inheritor class to more cleanly assign independent functions
 - forward and backward buttons are able to appropriately move through the roll memory
 - result for rolls and navigation are displayed, albeit broke, but it shows up and updates!
 
@@ -56,8 +56,9 @@ Change 4/30/2025
 5/2/2025
 - further cleanup and deletion of old code. began reformatting classes for better readability.
 - merged KeyInput class into Clickable button for better/easier functionality.
+- save button implemented. Roll Challenge area is screen grabbed and saved to SavedChallenges Directory
 
-:: Today's Problems:
+Today's Problems:
  - continue updating readability of classes
  - recreate background graphic with text
  - create the settings page graphic
@@ -77,7 +78,7 @@ General ->
    - consider how this would be displayed on screen before making graphics **
        - testing that text displays on screen is the priority.
 - Pass Filter should probably be its own class (very low priority)
-- File saving methods should probably update on program close. Having a or multiple saves with every roll might be excessive. One method could probably handle all saves together (mid priority)
+- File saving methods should probably update on program close. Having a or multiple saves with every roll might be excessive. One method could probably handle all saves together (mid-priority)
 
 CSV File -> (low priority)
 - need to update categories and add more choices, as well as reconfigure 'rarity' choices.
@@ -113,7 +114,7 @@ GUI ->
    - Create a basic template of a settings page? (low priority)
    - Create basic graphics for displaying challenge results
 
-- Better Graphics (low low priority)
+- Better Graphics (low-low priority)
    - Make background graphics nice
    - add animation effects (how? maybe via animated gifs?)
    - Screen transitions
@@ -123,7 +124,7 @@ GUI ->
 
 -Settings (after GUI Setup)
    - Create a user settings 'page'
-   - Make toggleable options to enable/disable categories -> add an extra field along with this that defaults to enabled.
+   - Make toggleable options to enable/disable categories -> add an extra field along with this that defaults to be enabled.
    - A save file for that so user preferences stay the same after program close
    - Make a custom rolls template (and potentially a save file to save a handful of 'user presets' (low priority) )
       - with checkboxes for enable/disable category after it is rolled

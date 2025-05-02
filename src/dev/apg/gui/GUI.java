@@ -20,7 +20,6 @@ public class GUI extends JPanel {
     //GUI Elements
     public DisplayUI displayUI = new DisplayUI(this); //GRAPHICS
     List<ClickableButton> buttons; //CLICKABLE BUTTONS + KEY INPUT
-//    KeyInput keyPressed = new KeyInput(this); //KEY INPUT
 
     //DATA//
     public Challenge challenge = new Challenge();
@@ -30,7 +29,6 @@ public class GUI extends JPanel {
     public GUI() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setBackground(Color.BLACK);
-//        this.addKeyListener(keyPressed);
         this.setFocusable(true);
         guiSetup();
     }

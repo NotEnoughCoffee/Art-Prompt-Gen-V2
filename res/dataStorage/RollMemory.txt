@@ -1,11 +1,11 @@
 A lot of Stuff,Tonalism,Coyote,Cubism,Picnic,Listening To Music,Color Pencil,Cool Colors
-Test Challenge,Viking Age,Lion,Hoarder Room,Convenience Store
-Test Challenge,Canoeing,Road Trip,Three Colors,Guard
-Llama Challenge,Doctor,Shapes,Asteroid,Wolf,Three Colors
-Llama Challenge,Vibrant,Robots,Panther,Pop Art,Moon
-Torpedo Challenge,Renaissance,Field
-Torpedo Challenge,Wizard,Cave
-Llama Challenge,Frisbee,Cavern,Watercolor,Iridescent,Coyote
+Llama Challenge,Dystopian Future,Frisbee,Temple,Bear,Washed Out
+Torpedo Challenge,Party,Medieval Period
+A lot of Stuff,Horse,Hot Springs,Ancient History,Kickboxing,Tiger,Future,Synchromism
+Llama Challenge,Victorian Era,Field,Raccoon,Yellow,News Anchor
+Llama Challenge,Hoarder Room,Red,Fauvism,Fog,African Wild Dog
+Llama Challenge,Koala,Fauvism,Blue,Daybreak,Space
+Llama Challenge,Barn,Bountiful Overgrown Future,Selling Goods,Glow In The Dark,Caribou
 Llama Challenge,Analogous Colors,Psychedelic Art,Magical Realm,Running,Dystopian Future
 Test NEW,Police,Triadic Colors,Zebra,Art From Around The World
 Test NEW,Stoat,Inline Skating,High Tech Future,Blue
@@ -18,4 +18,4 @@ Llama Challenge,Three Colors,Lizard,Space Age,Expressionism,Mechanic
 Llama Challenge,Monochrome,Graffiti Style,Waterfall,Evening,Pine Marten
 Torpedo Challenge,Baking,Bathroom
 A lot of Stuff,Super Flat,Surrealism,Dark,Afternoon,Iridescent,African Wild Dog,Expressionism
-1
+8

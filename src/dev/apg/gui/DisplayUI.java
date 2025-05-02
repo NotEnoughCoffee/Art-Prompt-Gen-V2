@@ -7,19 +7,20 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class DisplayUI extends FileLoader {
-    //class that displays text on top of background image
+
+    //BASIC SETUP//
+    public static String promptButtonText;
+    public String uiText;
+    public int x, y;
+
+    //GUI SETUP//
     GUI gui;
     Graphics2D g2D;
     Font ariel_32, ariel_28, ariel_72;
     BufferedImage background;
-    String backgroundImageFileLocation = "/graphics/BackgroundSampleLayout.png";
+    final String backgroundImageFileLocation = "/graphics/BackgroundSampleLayout.png";
 
-    public boolean messageDisplay = false;
-    //is UIText visible?
-    public String uiText;
-    public static String promptButtonText;
-    public int x, y;
-
+    //INITIALIZATION//
     public DisplayUI(GUI gui) {
         this.gui = gui;
         this.background = loadImage(backgroundImageFileLocation);
@@ -28,29 +29,26 @@ public class DisplayUI extends FileLoader {
         ariel_72 = new Font("Ariel", Font.BOLD, 72);
     }
 
+    //DRAW METHODS//
     public void draw(Graphics2D g2d) {
+        //Ran when repaint -> paintComponent is called on GUI class
+        //This method redraws the screen, reloads the 'background' image and loaded text elements
         this.g2D = g2d;
         g2d.drawImage(background,0,0,null);
+
+        //MARKED FOR UPDATE//
         setFont(g2d,ariel_32);
         g2d.setColor(Color.white);
+        //                 //
+
         drawText();
-    }
-
-    public void setUIText (String string) {
-        this.uiText = string;
-    }
-
-    public void setFont(Graphics2D g2d, Font font) {
-        g2d.setFont(font);
     }
     public void drawText() {
         resetUIText();
         setUIText(gui.rollText);
-
-        //getFontCenterX(uiText); //sets x coordinate so text is centered based on pixel width
-        //y = gui.screenHeight/2; //sets y coordinate so text is centered vertically
-
         drawButtonText();
+
+        //REMOVE//
         //Below is a temporary solution to display roll text until challenge class changes are implemented
         String[] text = uiText.split(";;");
         y = 150 + (350/2) - ((text.length -1) * 39)/2;
@@ -59,9 +57,10 @@ public class DisplayUI extends FileLoader {
             g2D.drawString(s, x, y); //use this to draw multiple strings with a loop
             y += 40;
         }
-
+        //REMOVE//
     }
 
+    //FOR REMOVAL//
     public void drawButtonText() {
         //placeholder method to display button text. needs to be reconfigured after further updates
         String[] buttonText = new String[] {Challenge.name,"Save","Back","Roll","Forward","Settings"} ;
@@ -83,21 +82,28 @@ public class DisplayUI extends FileLoader {
         setFont(g2D,ariel_32);
     }
 
+    //FORMATTING//
     public void resetUIText() {
         uiText = "";
         x = 0;
         y = 0;
     }
-
+    public void setFont(Graphics2D g2d, Font font) {
+        g2d.setFont(font);
+    }
+    public void setUIText (String string) {
+        this.uiText = string;
+    }
     public void getFontCenterX(String text) {
         int length = (int) g2D.getFontMetrics().getStringBounds(text, g2D).getWidth();
         x = GUI.screenWidth / 2 - length / 2;
-    }
+    } //sets X coordinate so text is centered on screen based on the strings width
 
+    //UNIMPLEMENTED METHODS//
 
-    //make method for centering text on screen (X)
-    //make draw method to draw text on screen
-    //make reset method to clear drawn text
+    //public void getFontCenterXLocal (String text) {} - method for finding the center of X for localized boxes
+
+    //public void wordWrap (String[] line) {} -> potentially make on FormatText class
 
 
 }

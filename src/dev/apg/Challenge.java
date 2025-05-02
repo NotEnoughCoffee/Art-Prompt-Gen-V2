@@ -86,17 +86,19 @@ public class Challenge extends FileLoader {
     }
 
     //RUN CHALLENGE HANDLERS//
+
+    //Runs Currently Selected Challenge
     public void runChallenge() {
         String[] currentChallenge = challengesList.get(challengeIndex);
         try {
-            runChallengeNEW(currentChallenge[0], Integer.parseInt(currentChallenge[1]), Boolean.parseBoolean(currentChallenge[2]));
+            runChallenge(currentChallenge[0], Integer.parseInt(currentChallenge[1]), Boolean.parseBoolean(currentChallenge[2]));
         }catch (Exception e) {
             System.out.println("Error Reading Challenge From Challenge List: " + Arrays.toString(currentChallenge));
         }
     }
 
     //Randomized Challenge - takes a count of number of selections to be chosen to randomly pick a challenge, with no category input
-    public void runChallengeNEW(String name,  int selectionCount,boolean allowCategoryRepeats) {
+    public void runChallenge(String name, int selectionCount, boolean allowCategoryRepeats) {
         //New Base challenge roll
             //get and set challenge name + repeats boolean
             //a modifier boolean? -> needs entire method to roll
@@ -111,11 +113,11 @@ public class Challenge extends FileLoader {
                 chosenCategories.get(i).enabled = false;
             }
         }
-        runChallengeNEW(name, chosenCategories);
+        runChallenge(name, chosenCategories);
     }
 
     //Specified Challenge - takes a List of Categories to and rolls those specific category
-    public void runChallengeNEW(String name, List<Category> chosenCategories) {
+    public void runChallenge(String name, List<Category> chosenCategories) {
         Challenge.name = name;
         Selection mod = runModifiers();
         List<Selection> choices = new ArrayList<>();
