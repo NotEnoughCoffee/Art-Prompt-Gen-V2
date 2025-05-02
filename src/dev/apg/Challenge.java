@@ -1,29 +1,40 @@
 package dev.apg;
 
 import dev.apg.utility.FileLoader;
+import dev.apg.utility.FormatText;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Challenge extends FileLoader {
-    public static String name = "Default Challenge";
-    static Rolls rolls = new Rolls(); //creates Category map, grants access to roll methods
+
+    //BASIC SETUP//
     final private static String memoryFileLocation = "/dataStorage/RollMemory.txt";
+    final private static String challengeListFileLocation = "/dataStorage/access/ChallengeList.txt";
+    public static String name = "Default Challenge";
+    public boolean modifierActive = false;
+    static Rolls rolls = new Rolls();
+
+    //ROLL MEMORY + MEMORY NAVIGATION//
     static List<RollMemory> rollMemory = new ArrayList<>(20); //stores previous rolls
     private int previousMemoryCounter; //loads last memoryCounter location
-    private int memoryCounter = 0; //tracks the location for memory to be stored //-1 offsets first stored memory
+    private int memoryCounter = 0; //tracks the location for memory to be stored
     private int memoryCursor = 0; //tracks user location while browsing previous rolls
-    final private static String challengeListFileLocation = "/dataStorage/access/ChallengeList.txt";
+
+    //CHALLENGE LIST + ACTIVE MEMORY TRACKING/
+    public  List<Selection> currentRollMemory;
     public static List<String[]> challengesList;
     public static int challengeIndex = 0;
-    public  List<Selection> currentRollMemory;
-    public boolean modifierActive = false;
+
+    //INITIALIZE//
     public Challenge() {
-        clearRollMemory(); //initiate memory and loads list with null
+        clearRollMemory();
         loadMemory();
         loadChallengeList();
     }
+
+    //FILE LOADING AND SAVING//
     private void loadMemory() {
         List<String[]> memoryLoad = loadFile(memoryFileLocation);
         if(memoryLoad.size() > 1) {
@@ -44,54 +55,37 @@ public class Challenge extends FileLoader {
         }
         memoryCounter = previousMemoryCounter;
         memoryCursor = previousMemoryCounter;
-    } //tested and works as intended
+    }
     public void saveMemory() {
-        //each line needs to be saved as "Challenge Text" , Selection List separated by commas
-        //and make sure if the element is null it is skipped
+        //Saves Memory File
         StringBuilder saveData = new StringBuilder();
 
         for (RollMemory memory : rollMemory) {
             if (memory == null) {
                 continue;
             }
-            StringBuilder saveLine = new StringBuilder();
+            StringBuilder saveLine;
             String[] line = memory.toString().split(",");
-            for(String word : line) {
-                if (word.contains("null")) {
-                    continue;
-                }
-                if (word.contains("[")) {
-                    word = word.substring(1);
-                    saveLine.append(word).append(",");
-                } else if (word.contains("]")) {
-                    word = word.substring(0, word.lastIndexOf("]"));
-                    saveLine.append(word).append(",");
-                } else {
-                    word = word.trim();
-                    saveLine.append(word).append(",");
-                }
-            }
+            saveLine = FormatText.formatRollMemorySave(line);
             saveData.append(saveLine);
             saveData.setLength(saveData.length() - 1);
             saveData.append("\n");
         }
         saveData.append(memoryCounter);
         saveFile(memoryFileLocation, String.valueOf(saveData));
-    } //tested and works as intended
+    }
     public void clearRollMemory() {
         rollMemory.clear();
         for(int i = 0; i < 20; i++) {
             rollMemory.add(i, null);
         }
-    } //tested and works as intended
+    }
     private void loadChallengeList() {
         challengesList = loadFile(challengeListFileLocation);
         Challenge.name = challengesList.get(0)[0];
     }
 
-
-
-
+    //RUN CHALLENGE HANDLERS//
     public void runChallenge() {
         String[] currentChallenge = challengesList.get(challengeIndex);
         try {
@@ -100,40 +94,6 @@ public class Challenge extends FileLoader {
             System.out.println("Error Reading Challenge From Challenge List: " + Arrays.toString(currentChallenge));
         }
     }
-    //OLD CODE - TO BE REPLACED //
-    public void runDefaultChallenge() {
-        //Default challenge which picks 2 options, each from a unique enabled category.
-        runChallenge("Default Test Challenge",3, false);
-    } // for testing and initial setup
-    public void runChallenge(String name, int selectionCount, boolean allowCategoryRepeats) {
-        //runs the challenge with specified parameters and returns a list of the results
-        Challenge.name = name; //name is assigned via overloaded method inserting currentChallenge[0] as the new name
-        List<Selection> choices = new ArrayList<>();
-        for(int i = 0; i < selectionCount; i++){
-            if(allowCategoryRepeats) {
-                choices.add(i, roll());
-            }else{
-                choices.add(i, rollAndDisable());
-            }
-        }
-        addToRollMemory(name, choices); //roll added to memory
-        setCurrentMemory();
-        saveMemory();
-        reEnableCats(choices); //re-enables all selected cats (regardless if they were disabled)
-    } //tested and works
-    //***** Needs to be reconfigured once GUI implemented
-    //Output list not tested
-    //END REPLACE//
-
-
-    //RUN CHALLENGE REWRITE//
-
-    //new Unit Test Challenge
-    @SuppressWarnings("unused")
-    public void challenge_Run_Challenge_NEW_Test() {
-        runChallengeNEW("Test NEW", 4,false);
-    }
-
 
     //Randomized Challenge - takes a count of number of selections to be chosen to randomly pick a challenge, with no category input
     public void runChallengeNEW(String name,  int selectionCount,boolean allowCategoryRepeats) {
@@ -171,8 +131,9 @@ public class Challenge extends FileLoader {
         reEnableCats(choices);
     }
 
+    //Modifier Active check and Selection
     public Selection runModifiers() {
-        //Checks if Modifiers are Active and if passes weighted roll, a modifier will be returned. otherwise null is returned.
+        //Checks if Modifiers are Active + if it passes a weighted roll, a modifier will be returned. otherwise null is returned.
         try {
             return modifierActive && rolls.rarityPassSuperRare() ? rolls.rollSelection(rolls.masterCatMap.get(rolls.mods)) : null;
         } catch (Exception e) {
@@ -180,19 +141,13 @@ public class Challenge extends FileLoader {
             return null;
         }
     }
-
-
-
-
-
-
-
     public void reEnableCats(List<Selection> selections) {
         for(Selection selection : selections) {
             rolls.catEnable(rolls.getCategory(selection));
         }
-    } //tested and works as intended
-    //use two below methods with a navigation method to display previous or next rolls based on the memory location?
+    }
+
+    //ROLL MEMORY HANDLING//
     public void setCurrentMemory() {
         if(memoryCursor >20) {
             memoryCounter = 0;
@@ -214,7 +169,7 @@ public class Challenge extends FileLoader {
         }//brings back to beginning if noting is in the highest available memory slot
 
         setCurrentMemory();
-    } // navigation not implemented
+    }
     public void backwardMemory() {
         //moves memory location cursor backwards
         memoryCursor--;
@@ -228,7 +183,7 @@ public class Challenge extends FileLoader {
         }
         setCurrentMemory();
 
-    } // navigation not implemented
+    }
     public void addToRollMemory(String challengeRoll, List<Selection> selections) {
         if(memoryCounter == 20) {
             memoryCounter = 0;
@@ -237,21 +192,5 @@ public class Challenge extends FileLoader {
         memoryCursor = memoryCounter; //brings the cursor to the current entry that is being saved.
         rollMemory.set(memoryCounter,new RollMemory(challengeRoll,selections));
         memoryCounter++;
-    } //tested and works as intended
-    public Selection rollAndDisable () {
-        //by default, categories remain enabled after a selection is made.
-        Selection selection = roll();
-        try {
-            rolls.catDisable(selection);
-        }catch (Exception e) {
-            System.out.println("Error with disabling category for: " + selection + " in: " + selection.Category());
-        }
-        return selection;
-    } //tested and works as intended
-    public Selection roll() {
-        //category remains enabled after selection is made.
-        return rolls.rollSelection(rolls.rollCategory());
-    } //tested and works as intended
-
-
+    }
 }

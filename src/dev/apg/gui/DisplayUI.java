@@ -55,7 +55,6 @@ public class DisplayUI extends FileLoader {
         String[] text = uiText.split(";;");
         y = 150 + (350/2) - ((text.length -1) * 39)/2;
         for(String s : text) {
-            System.out.println(s);
             getFontCenterX(s);
             g2D.drawString(s, x, y); //use this to draw multiple strings with a loop
             y += 40;
@@ -92,7 +91,7 @@ public class DisplayUI extends FileLoader {
 
     public void getFontCenterX(String text) {
         int length = (int) g2D.getFontMetrics().getStringBounds(text, g2D).getWidth();
-        x = gui.screenWidth / 2 - length / 2;
+        x = GUI.screenWidth / 2 - length / 2;
     }
 
 

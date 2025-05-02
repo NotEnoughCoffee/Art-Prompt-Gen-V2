@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="UI phase 1 is complete. Basic UI features are functional and the program is in a usable state!">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" afterDir="false" />
+    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="generic update">
+      <change beforePath="$PROJECT_DIR$/src/dev/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Notes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/apg/Challenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/Challenge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/Rolls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/Rolls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/DisplayUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/DisplayUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/KeyInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/KeyInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/BackButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/BackButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/ClickableButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/ClickableButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/ForwardButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/ForwardButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/MainScreenButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/MainScreenButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/PromptButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/PromptButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/RollButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/RollButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/SaveButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/SaveButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/SettingsButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/SettingsButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/utility/FormatText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/utility/FormatText.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746119185139</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="generic update">
+      <option name="closed" value="true" />
+      <created>1746135014411</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1746135014411</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -245,7 +262,8 @@
     <MESSAGE value="SCREEEEEEEEEEEEEM" />
     <MESSAGE value="implemented Unit Tests structure and some base tests for previously completed key elements. Repackaged classes." />
     <MESSAGE value="UI phase 1 is complete. Basic UI features are functional and the program is in a usable state!" />
-    <option name="LAST_COMMIT_MESSAGE" value="UI phase 1 is complete. Basic UI features are functional and the program is in a usable state!" />
+    <MESSAGE value="generic update" />
+    <option name="LAST_COMMIT_MESSAGE" value="generic update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

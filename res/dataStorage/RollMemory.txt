@@ -1,4 +1,4 @@
-Test Challenge,Shapes,Garden,Bedroom,Digimon
+A lot of Stuff,Tonalism,Coyote,Cubism,Picnic,Listening To Music,Color Pencil,Cool Colors
 Test Challenge,Viking Age,Lion,Hoarder Room,Convenience Store
 Test Challenge,Canoeing,Road Trip,Three Colors,Guard
 Llama Challenge,Doctor,Shapes,Asteroid,Wolf,Three Colors
@@ -17,5 +17,5 @@ Test Challenge,Faire,Five Colors,Pastel,Traveling
 Llama Challenge,Three Colors,Lizard,Space Age,Expressionism,Mechanic
 Llama Challenge,Monochrome,Graffiti Style,Waterfall,Evening,Pine Marten
 Torpedo Challenge,Baking,Bathroom
-Test Challenge,Hot Springs,Chocobo,Kangaroo,Sunset
-19
+A lot of Stuff,Super Flat,Surrealism,Dark,Afternoon,Iridescent,African Wild Dog,Expressionism
+1

@@ -48,22 +48,24 @@ Change 4/30/2025
 - repackaged classes to be with related features
 - added unit testing structure to main class and cleaned up old test code
 - added unit testing for some previously completed key features
-- temporay fix for display text for testing purposes until further updates made to the challenges class
+- temporary fix for display text for testing purposes until further updates made to the challenges class
+- Button text implemented. Bugs with the prompt button
+- GUI at a functional stage, merged branch with main and opened new branch to work on challenge methods
+- reconfigured challenge methods to work with more conditions for future functions
+
+5/2/2025
+- further cleanup and deletion of old code. began reformatting classes for better readability.
+- merged KeyInput class into Clickable button for better/easier functionality.
 
 :: Today's Problems:
- - make all button text show up Or just add that to the graphics file to save headache?
-       - title bar would still need to be handled independently due to changing text display and expected user input
- - implement screen/challenge save feature to save snapshot of specified area to a screenshot folder
-
- -Potentially make a settings page graphic and implement that button (settings page does not need to be functional itself)
- -once all the buttons work, display text, and roll text is displayed better:
-       - reconfigure some of the challenge roll methods to work with user input and add Modifier Rolls functions
+ - continue updating readability of classes
+ - recreate background graphic with text
+ - create the settings page graphic
 
 
 
 TODO Cleaned-up:
 General ->
-- Code cleanup, move and package related classes, remove unused code from tests and unused features.
 - Consider future plans for project: is the best format for this a computer or phone app?
    - as a phone app this could potentially reach more people
    - as a desktop app, users would likely have more control, or the ability to give users more control is easier to work with
@@ -91,32 +93,25 @@ Rolls Class -> (low priority)
    - unsure if there is a better way to search since the only relevant information will be the Selection name; unless we re-work the save file feature to include category name for less taxing search (low priority)
 
 Challenges Class ->
-- Navigation methods need to be set up once key input is working to allow users to actually navigate through roll memory
--
+- Potentially finished?
 
 GUI ->
 - determine window/application size // Currently set to 800x600
-   - look into making multiple sizes for potential
-- reassess Window class.
-- reassess draw method and how screen updating will work when challenges are rolled (after buttons are working)
-
-- KeyInput (**)
-   - figure out controls layout and all functions that need or will need keybindings
+   - look into making multiple sizes for alternate devices
+- Text display is temporary, need to reformat how text is displayed once more graphics are created and implemented
 
 - Buttons (*)
-   - figure out how to make clickable spots in the window to act as the buttons
-   - see if this can be a singular graphic
    - make the 'Challenge type' at the top a clickable button (or drop menu?)
       - make this scroll through the options, including any user options if the preset is 'enabled'
 
 - DisplayUI (?)
-   - needs work, will handle loading images and text from 'rolls'
+   - needs update when new graphics handling is needed
 
 - Graphics (***)
    - set up scaling (low priority, application can stay one size for now)
       - change the way elements are arranged based on desktop/phone app
    - Create a basic template of a settings page? (low priority)
-   - Create basic graphics to highlight the challenge results
+   - Create basic graphics for displaying challenge results
 
 - Better Graphics (low low priority)
    - Make background graphics nice
