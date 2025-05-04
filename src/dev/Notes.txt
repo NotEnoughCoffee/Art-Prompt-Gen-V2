@@ -58,10 +58,16 @@ Change 4/30/2025
 - merged KeyInput class into Clickable button for better/easier functionality.
 - save button implemented. Roll Challenge area is screen grabbed and saved to SavedChallenges Directory
 
+5/4/2025
+- Created new UI for the first program theme and upgraded background style
+
+
 Today's Problems:
- - continue updating readability of classes
- - recreate background graphic with text
+ - REWORK Button settings // Remove button text gen for all but prompt button
+ - Redefine button dimensions with "Polygons"
  - create the settings page graphic
+ - need to change the file reading method for the challenge type selector for more parameters
+ - maybe make a method for specifically handling rolling the same category multiple times
 
 
 
@@ -79,6 +85,9 @@ General ->
        - testing that text displays on screen is the priority.
 - Pass Filter should probably be its own class (very low priority)
 - File saving methods should probably update on program close. Having a or multiple saves with every roll might be excessive. One method could probably handle all saves together (mid-priority)
+
+MUSIC ->
+- low priority -> integrate royalty free music and sound effects
 
 CSV File -> (low priority)
 - need to update categories and add more choices, as well as reconfigure 'rarity' choices.
@@ -134,6 +143,16 @@ GUI ->
    - An Error Checker (to look at various elements and print out a log of any flags
       - to find issues with category/selection syntax, output incorrect values for rarity system
       - any other potential detections needed based on user input related issues
+
+
+//OTHER//
+- LONG TERM: I want multiple interface themes that would change on clicking the main screen button
+ -> to start, 90's theme (think saved by the bell)
+ -> Other theme ideas: Space, Animal Print,
+- I want idle animation graphics that are subtle (slow scrolling background texture(s); shapes that wiggle and move randomly; animation effect when you hover over certain areas)
+- i want Animation effects for when the mouse hovers over buttons. (unique or randomized (same effect until mouse leaves area))
+- i want a 'button click' visual
+    -> this can be done with loading images over the buttons; OR each button visual could be manually loaded over a plain background
 
 
 "Finished" Elements:

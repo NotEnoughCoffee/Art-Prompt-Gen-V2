@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="KeyInput removed and merged into ClickableButton for better functionality">
-      <change afterPath="$PROJECT_DIR$/SavedChallenges/2025_05_02_135630_Challenge_Snapshot.png" afterDir="false" />
+    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="save function implemented and further code cleanup">
+      <change afterPath="$PROJECT_DIR$/res/graphics/90s_Backgroundlip_V1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/Challenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/Challenge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/DisplayUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/DisplayUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/ClickableButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/ClickableButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/SaveButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/SaveButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/utility/FileLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/utility/FileLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/utility/FormatText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/utility/FormatText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Notes.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +44,14 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/dev/Notes.txt" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -84,8 +78,8 @@
       <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\out\production\ThemeGenerator2.0" />
       <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\res\graphics" />
+      <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\out\production\ThemeGenerator2.0" />
       <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\src\dev\tg" />
       <recent name="C:\Users\andre\IdeaProjects\ThemeGenerator2.0\res\dataStorage" />
     </key>
@@ -241,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746200123850</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="save function implemented and further code cleanup">
+      <option name="closed" value="true" />
+      <created>1746210028523</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1746210028523</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -270,7 +272,8 @@
     <MESSAGE value="UI phase 1 is complete. Basic UI features are functional and the program is in a usable state!" />
     <MESSAGE value="generic update" />
     <MESSAGE value="KeyInput removed and merged into ClickableButton for better functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="KeyInput removed and merged into ClickableButton for better functionality" />
+    <MESSAGE value="save function implemented and further code cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="save function implemented and further code cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
