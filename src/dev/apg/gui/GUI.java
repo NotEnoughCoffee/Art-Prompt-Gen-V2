@@ -65,7 +65,26 @@ public class GUI extends JPanel {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
         displayUI.draw(g2D);
+
+        g.setColor(Color.RED);
+//        Polygon poly = new BackButton().buttonDimensions;
+//        Polygon poly2 = new ForwardButton().buttonDimensions;
+//        Polygon poly3 = new PromptButton().buttonDimensions;
+//        Polygon poly4 = new RollButton().buttonDimensions;
+//        Polygon poly5 = new SaveButton().buttonDimensions;
+//        Polygon poly6 = new SettingsButton().buttonDimensions;
+//        g.fillPolygon(poly);
+//        g.fillPolygon(poly2);
+//        g.fillPolygon(poly3);
+//        g.fillPolygon(poly4);
+//        g.fillPolygon(poly5);
+//        g.fillPolygon(poly6);
+
+
+
+
         g2D.dispose();
+
     }
     public void refresh() {
         //Refresh Screen Elements

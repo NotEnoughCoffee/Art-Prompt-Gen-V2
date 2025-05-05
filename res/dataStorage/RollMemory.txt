@@ -6,16 +6,16 @@ Llama Challenge,Victorian Era,Field,Raccoon,Yellow,News Anchor
 Llama Challenge,Hoarder Room,Red,Fauvism,Fog,African Wild Dog
 Llama Challenge,Koala,Fauvism,Blue,Daybreak,Space
 Llama Challenge,Barn,Bountiful Overgrown Future,Selling Goods,Glow In The Dark,Caribou
-Llama Challenge,Analogous Colors,Psychedelic Art,Magical Realm,Running,Dystopian Future
-Test NEW,Police,Triadic Colors,Zebra,Art From Around The World
-Test NEW,Stoat,Inline Skating,High Tech Future,Blue
-Test NEW,Space Age,Giraffe,Billiards,Deep Sea
-Test NEW,Drugs,Impressionism,Four Colors,Lombax
-Test NEW,Silver,Mountain,Wolf,Painted
-Test Challenge,Gold,Blue,Art From Around The World,Brewing
+Torpedo Challenge,Djing,Llama
+Test Challenge,Early Morning,Art Deco,Panda,Bathing
+Llama Challenge,Glitter,Baking,Evening,Donkey,Temple
+Test Challenge,Future,Griffin,Gray,Green
+Test Challenge,Watercolor,Early Morning,Skunk,Karaoke
+Llama Challenge,Protogen,Flying,Red,Suprematism,Atomic Age
+Test Challenge,Ancient History,Natural Disaster,Classic Antiquity,Street Art
 Test Challenge,Faire,Five Colors,Pastel,Traveling
 Llama Challenge,Three Colors,Lizard,Space Age,Expressionism,Mechanic
 Llama Challenge,Monochrome,Graffiti Style,Waterfall,Evening,Pine Marten
 Torpedo Challenge,Baking,Bathroom
 A lot of Stuff,Super Flat,Surrealism,Dark,Afternoon,Iridescent,African Wild Dog,Expressionism
-8
+15

@@ -16,15 +16,15 @@ public abstract class ClickableButton extends JPanel implements MouseListener, K
     protected static String currentChallengeName = Challenge.name;
     public String name;
     public boolean enabled;
-    protected int button1, button2;
-    protected Rectangle buttonDimensions;
+    protected int key1, key2;
+    protected int[] xPoints, yPoints;
+    public Polygon buttonDimensions;
 
     public static GUI gui = null;
 
     //INITIALIZATION//
-    public ClickableButton(String name, Rectangle buttonDimensions, boolean enabled) {
+    public ClickableButton(String name, boolean enabled) {
         this.name = name;
-        this.buttonDimensions = buttonDimensions;
         this.enabled = enabled;
     }
 
@@ -40,7 +40,7 @@ public abstract class ClickableButton extends JPanel implements MouseListener, K
     }
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e != null && (e.getKeyCode() == button1 || e.getKeyCode() == button2 )) {
+        if(e != null && (e.getKeyCode() == key1 || e.getKeyCode() == key2)) {
             doTheThing();
         }
     }
