@@ -1,5 +1,6 @@
 package dev.apg;
 
+import dev.apg.gui.DisplayUI;
 import dev.apg.utility.FileLoader;
 import dev.apg.utility.FormatText;
 
@@ -14,7 +15,7 @@ public class Challenge extends FileLoader {
     final private static String challengeListFileLocation = "/dataStorage/access/ChallengeList.txt";
     public static String name = "Default Challenge";
     public boolean modifierActive = false;
-    static Rolls rolls = new Rolls();
+    public static Rolls rolls = new Rolls();
 
     //ROLL MEMORY + MEMORY NAVIGATION//
     static List<RollMemory> rollMemory = new ArrayList<>(20); //stores previous rolls
@@ -158,6 +159,7 @@ public class Challenge extends FileLoader {
             memoryCursor = 19;
         }
         currentRollMemory = new ArrayList<>(rollMemory.get(memoryCursor).selections());
+        DisplayUI.setCurrentRollMemory(currentRollMemory);
     }
     public void forwardMemory() {
         //moves memory location cursor forwards

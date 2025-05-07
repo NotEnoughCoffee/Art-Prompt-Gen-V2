@@ -13,9 +13,9 @@ Test Challenge,Future,Griffin,Gray,Green
 Test Challenge,Watercolor,Early Morning,Skunk,Karaoke
 Llama Challenge,Protogen,Flying,Red,Suprematism,Atomic Age
 Test Challenge,Ancient History,Natural Disaster,Classic Antiquity,Street Art
-Test Challenge,Faire,Five Colors,Pastel,Traveling
-Llama Challenge,Three Colors,Lizard,Space Age,Expressionism,Mechanic
+Test Challenge,Kangaroo,Glow In The Dark,Psychedelic Art,Falcon
+Llama Challenge,Gecko,Future,Party,Smithing,Painted
 Llama Challenge,Monochrome,Graffiti Style,Waterfall,Evening,Pine Marten
 Torpedo Challenge,Baking,Bathroom
 A lot of Stuff,Super Flat,Surrealism,Dark,Afternoon,Iridescent,African Wild Dog,Expressionism
-15
+17

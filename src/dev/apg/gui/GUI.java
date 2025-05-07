@@ -57,7 +57,7 @@ public class GUI extends JPanel {
     public void rollChallenge() {
         //Runs Challenge through challenge class handlers
         challenge.runChallenge();
-        setRollText();
+        //setRollText();
         repaint();
     }
 
@@ -66,7 +66,8 @@ public class GUI extends JPanel {
         Graphics2D g2D = (Graphics2D) g;
         displayUI.draw(g2D);
 
-        g.setColor(Color.RED);
+        //g.setColor(Color.RED);
+        //move to a unit test.
 //        Polygon poly = new BackButton().buttonDimensions;
 //        Polygon poly2 = new ForwardButton().buttonDimensions;
 //        Polygon poly3 = new PromptButton().buttonDimensions;
@@ -91,7 +92,7 @@ public class GUI extends JPanel {
         if(challenge.currentRollMemory == null) {
             challenge.setCurrentMemory();
         }
-        setRollText();
+        //setRollText();
         repaint();
     }
 

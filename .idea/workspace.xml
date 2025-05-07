@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="minor commit for new branch">
+    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="I spent an hour troubleshooting why my new buttons weren't working only to find out it was just my mouse was broken @.@&#10;New 90's Theme Though!">
+      <change afterPath="$PROJECT_DIR$/res/audio/Music Info.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/graphics/90s_Background_V2.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/graphics/90s_Background_V2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/apg/Challenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/Challenge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/DisplayUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/DisplayUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/BackButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/BackButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/ClickableButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/ClickableButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/ForwardButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/ForwardButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/MainScreenButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/MainScreenButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/PromptButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/PromptButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/RollButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/RollButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/SaveButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/SaveButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/SettingsButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/SettingsButton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +257,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746400604320</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="I spent an hour troubleshooting why my new buttons weren't working only to find out it was just my mouse was broken @.@&#10;New 90's Theme Though!">
+      <option name="closed" value="true" />
+      <created>1746413423136</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1746413423136</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -294,7 +296,8 @@
     <MESSAGE value="KeyInput removed and merged into ClickableButton for better functionality" />
     <MESSAGE value="save function implemented and further code cleanup" />
     <MESSAGE value="minor commit for new branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor commit for new branch" />
+    <MESSAGE value="I spent an hour troubleshooting why my new buttons weren't working only to find out it was just my mouse was broken @.@&#10;New 90's Theme Though!" />
+    <option name="LAST_COMMIT_MESSAGE" value="I spent an hour troubleshooting why my new buttons weren't working only to find out it was just my mouse was broken @.@&#10;New 90's Theme Though!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
