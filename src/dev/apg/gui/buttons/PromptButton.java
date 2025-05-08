@@ -4,10 +4,16 @@ import dev.apg.Challenge;
 import dev.apg.gui.DisplayUI;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class PromptButton extends ClickableButton {
     public PromptButton() {
-        super("Prompt", new Rectangle(35,35,730,105), true);
+        super("Prompt", true);
+        xPoints = new int[]{83, 457, 717, 672, 519, 149};
+        yPoints = new int[]{32, 40, 20, 191, 185, 199};
+        buttonDimensions = new Polygon(xPoints,yPoints, 6);
+        key1 = KeyEvent.VK_UP;
+        key2 = KeyEvent.VK_W;
     }
     @Override
     protected void doTheThing() {

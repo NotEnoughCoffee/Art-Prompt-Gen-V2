@@ -2,7 +2,7 @@ package dev.apg;
 import java.util.List;
 public class Category {
     //Class that contains all the Selection choices within each category
-    String name;
+    public String name;
     List<Selection> selections;
     boolean enabled;
     public Category(String name, List<Selection> selections) {

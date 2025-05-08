@@ -1,8 +1,8 @@
 package dev.apg.gui;
 
 import dev.apg.Challenge;
-import dev.apg.Selection;
 import dev.apg.gui.buttons.*;
+import dev.apg.utility.FormatText;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,25 +11,36 @@ import java.util.List;
 
 public class GUI extends JPanel {
 
-    //screen dimensions in pixels
-    final int scale = 1;
-    final int screenWidth = 800;
-    final int screenHeight = 600;
-    //GUI Elements
-    public DisplayUI displayUI = new DisplayUI(this); //Updates UI with text and images
-    List<ClickableButton> buttons;
-    KeyInput keyPressed = new KeyInput(this);
+    //SCREEN SIZE + SCALING//
+    @SuppressWarnings("unused")
+    public static int scale = 1; //Not implemented yet
+    final static int screenWidth = 800;
+    final static int screenHeight = 600;
 
+    //GUI Elements
+    public DisplayUI displayUI = new DisplayUI(this); //GRAPHICS
+    List<ClickableButton> buttons; //CLICKABLE BUTTONS + KEY INPUT
+
+    //DATA//
     public Challenge challenge = new Challenge();
     String rollText = "";
+
+    //INITIALIZE//
     public GUI() {
         this.setPreferredSize(new Dimension(screenWidth,screenHeight));
         this.setBackground(Color.BLACK);
-        this.addKeyListener(keyPressed);
         this.setFocusable(true);
         guiSetup();
     }
-
+    public void guiSetup() {
+        addButtons();
+        for(ClickableButton button : buttons) {
+            this.addMouseListener(button);
+            this.addKeyListener(button);
+        }
+        ClickableButton.gui = this;
+        //music?
+    }
     private void addButtons() {
         buttons = new ArrayList<>(List.of(
                 new PromptButton(),
@@ -41,43 +52,52 @@ public class GUI extends JPanel {
                 new SettingsButton()
         ));
     }
-    public void guiSetup() {
-        addButtons();
-        for(ClickableButton button : buttons) {
-            this.addMouseListener(button);
-        }
-        ClickableButton.gui = this;
-        //music?
+
+    //SCREEN REDRAW METHODS//
+    public void rollChallenge() {
+        //Runs Challenge through challenge class handlers
+        challenge.runChallenge();
+        //setRollText();
+        repaint();
     }
 
-    public void paintComponent(Graphics g) { //method called when repaint() is used
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
-        //calls screen painting method and casts graphic to 2D image.
         displayUI.draw(g2D);
+
+        //g.setColor(Color.RED);
+        //move to a unit test.
+//        Polygon poly = new BackButton().buttonDimensions;
+//        Polygon poly2 = new ForwardButton().buttonDimensions;
+//        Polygon poly3 = new PromptButton().buttonDimensions;
+//        Polygon poly4 = new RollButton().buttonDimensions;
+//        Polygon poly5 = new SaveButton().buttonDimensions;
+//        Polygon poly6 = new SettingsButton().buttonDimensions;
+//        g.fillPolygon(poly);
+//        g.fillPolygon(poly2);
+//        g.fillPolygon(poly3);
+//        g.fillPolygon(poly4);
+//        g.fillPolygon(poly5);
+//        g.fillPolygon(poly6);
+
+
+
+
         g2D.dispose();
-    }
 
-    private String formatRollTextOutput() {
-        StringBuilder string = new StringBuilder();
-        if(challenge.currentRollMemory == null) {
-        challenge.setCurrentMemory();
-        }
-        for(Selection selection : challenge.currentRollMemory) {
-            string.append(selection.Category()).append(": ").append(selection.name()).append(";;");
-        }
-        return String.valueOf(string);
     }
-
     public void refresh() {
-        rollText = formatRollTextOutput();
-        repaint();
-    }
-    public void rollChallenge() {
-        challenge.runChallenge();
-        rollText = formatRollTextOutput();
+        //Refresh Screen Elements
+        if(challenge.currentRollMemory == null) {
+            challenge.setCurrentMemory();
+        }
+        //setRollText();
         repaint();
     }
 
-
+    //DATA HANDLING//
+    private void setRollText() {
+        this.rollText = FormatText.formatRollTextOutput(challenge.currentRollMemory);
+    }
 }

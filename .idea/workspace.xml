@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="implemented Unit Tests structure and some base tests for previously completed key elements. Repackaged classes.">
+    <list default="true" id="ae8d00af-6133-41d3-80cc-b53593ddc0f2" name="Changes" comment="general save">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/PassFilter.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/dataStorage/RollMemory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/Notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/Notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/Challenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/Challenge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/DisplayUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/DisplayUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/MainScreenButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/MainScreenButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dev/apg/gui/buttons/PromptButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dev/apg/gui/buttons/PromptButton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main-project-reconfig" />
+        <entry key="$PROJECT_DIR$" value="feature-GUI_V2_Integration" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,7 +66,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main-GUI-Feature",
+    "git-widget-placeholder": "feature-GUI__V2__Integration",
     "last_opened_file_path": "C:/Users/andre/IdeaProjects/ThemeGenerator2.0/src",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }

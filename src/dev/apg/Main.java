@@ -3,6 +3,7 @@ package dev.apg;
 import dev.apg.gui.Window;
 
 public class Main {
+
     public static void main(String[] args) {
         Window.open(); //Runs Entire Program
 
@@ -63,10 +64,11 @@ public class Main {
 
     //CHALLENGE CLASS UNIT TESTS
     @SuppressWarnings("unused")
-    static void challenge_Run_Default_Challenge_Test() {
+    static void challenge_Run_Default_Challenge_Test_NEW() {
         //Unit test on default test method within rolls class. Does not utilize loading test information from a save file
         Challenge challenge = new Challenge();
-        challenge.runDefaultChallenge();
+        challenge.runChallenge("Unit Test NEW", 4,false);
+        //Updated unit test with updated challenge handler method
         System.out.println(challenge.currentRollMemory);
     }
     //CHALLENGE -> ROLL MEMORY TESTS
@@ -84,8 +86,6 @@ public class Main {
     //GUI FEATURE TESTS//
 
     //DISPLAY UI TESTS
-
-    //KEY INPUT TESTS
 
     //CLICKABLE BUTTON TESTS
 

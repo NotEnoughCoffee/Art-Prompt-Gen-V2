@@ -1,13 +1,21 @@
 package dev.apg.utility;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 public class FileLoader {
+
+    //FILE HANDLERS//
     final protected List<String[]> loadFile(String fileName){
         List<String[]> readLines = new ArrayList<>();
         try {
@@ -47,6 +55,8 @@ public class FileLoader {
             System.out.println("Error Writing to File:" + fileName);
         }
     }
+
+    //IMAGE HANDLERS//
     final protected BufferedImage loadImage(String filename) {
         BufferedImage image = null;
         try {
@@ -56,8 +66,37 @@ public class FileLoader {
         }
         return image;
     }
+    public static void saveScreen(JPanel gui, Rectangle rectangle) {
+        BufferedImage panelSnapshot;
+        String date = new SimpleDateFormat("yyyy_MM_dd").format(new Date());
+        String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HHmmss"));
+        String fileName = date + "_" + time + "_Challenge_Snapshot.png";
+        try {
+            //grab panel snapshot
+            panelSnapshot = new BufferedImage(gui.getWidth(), gui.getHeight(), BufferedImage.TYPE_INT_RGB);
+            Graphics2D g2D = panelSnapshot.createGraphics();
+            gui.print(g2D);
+            g2D.dispose();
+        } catch (Exception e) {
+            System.out.println("Error with grabbing panel snapshot");
+            return;
+        }
+        //trim snapshot
+        panelSnapshot = panelSnapshot.getSubimage(rectangle.x,rectangle.y,rectangle.width,rectangle.height);
+        saveImage(panelSnapshot,fileName);
 
-    final protected void saveScreen() {
-        //Implement later for save function to snapshot a screen grab of the challenge elements to output folder
+    } //used via save button, has access to rectangle and gui
+    private static void saveImage(BufferedImage image, String fileName) {
+        String fileLocation = "SavedChallenges/" + fileName;
+        try{
+            File parentDir = new File(fileLocation).getParentFile();
+            if(parentDir.mkdirs()) {
+                System.out.println("Parent Directory SavedChallenges was missing and has been created");
+            }
+            ImageIO.write(image,"png", new File(fileLocation));
+        }catch(IOException e) {
+            System.out.println("Unable to save image to: " + fileLocation);
+
+        }
     }
 }
