@@ -2,6 +2,7 @@ package dev.apg.utility;
 
 import dev.apg.Selection;
 
+import java.util.ArrayList;
 import java.util.List;
 
 final public class FormatText {
@@ -48,6 +49,38 @@ final public class FormatText {
     }
 
     //OTHER TEXT FORMATTING//
+
+    public static List<String> balanceMultiline (String string, int lineCount) {
+        if(!string.contains(" ")) {
+            System.out.println("No Spaces Detected for String: " + string + " || balanceMultiline skipped");
+            return new ArrayList<>(List.of(string));
+        }
+        List<String> balancedLines = new ArrayList<>();
+        String[] words = string.split(" ");
+        int wordCount = words.length; //total number of words
+        int counter = 0; // will keep track as words are added to each line
+        int avgWordsPerLine = wordCount / lineCount;
+        boolean isRemainder = false;
+        int remainder = 0;
+        if( wordCount % lineCount != 0 ) { //Extra word will be added for # (of remainder) lines
+            remainder = wordCount % lineCount;
+            isRemainder = true;
+        }
+        for(int i = 0; i < lineCount; i++) {
+            StringBuilder currentLine = new StringBuilder();
+            for(int k = 0; k < avgWordsPerLine; k++) { //adds average number of words to the current line
+                currentLine.append(words[counter]).append(" ");
+                counter++;
+            }
+            if(isRemainder && remainder > 0) { //extra word added if any left in the remainder.
+                currentLine.append(words[counter]).append(" ");
+                counter++;
+                remainder--;
+            }
+            balancedLines.add(i, String.valueOf(currentLine)); //line added to list
+        }
+        return balancedLines;
+    }
     public static String formatRollTextOutput(List<Selection> currentRollMemory) {
         StringBuilder string = new StringBuilder();
         for(Selection selection : currentRollMemory) {
@@ -56,7 +89,7 @@ final public class FormatText {
             string.append(selection.name()).append(";;");
         }
         return String.valueOf(string);
-    }
+    } //REMOVE ONCE NEW METHODS TAKE OVER
     public static StringBuilder formatRollMemorySave(String[] line) {
         StringBuilder saveLine = new StringBuilder();
         for(String word : line) {

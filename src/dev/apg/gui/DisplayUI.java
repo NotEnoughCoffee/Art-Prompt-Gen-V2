@@ -4,10 +4,12 @@ import dev.apg.Category;
 import dev.apg.Challenge;
 import dev.apg.Selection;
 import dev.apg.utility.FileLoader;
+import dev.apg.utility.FormatText;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DisplayUI extends FileLoader {
@@ -117,7 +119,7 @@ public class DisplayUI extends FileLoader {
         for (int i = 0; i < count; i++) {
             //Draw display area polygon -> implement later
             String catName = categories.get(i).name;
-            Font catFont = setFontSize(catName, displayAreas[i].width, displayAreas[i].height);
+            drawTextInDisplayArea(catName, displayAreas[i]);
             //Draw Category centered and sized text using rectangle dimensions.
             //change rectangle y = y + yHeight; yHeight = uiDimensions - yHeight;
             // that should return the dimensions of the text display area for selection
@@ -152,67 +154,29 @@ public class DisplayUI extends FileLoader {
         else return null;
     }
 
-    public List<String> balanceLine(List<String> text, int wordCount, int lineSplits) {
-        String reformedLine = String.join(" ", text); //turns the List back into a line
-        String[] words = reformedLine.split(" "); //collects each word
-        List<String> balancedText = new ArrayList<>();
-        int[] updatedWordCount = new int[lineSplits]; //will keep track of words to be held per line
-
-
-        int[][] wordsLetterCount = new int[words.length][];
-        wordsLetterCount[0] = new int[wordCount];
-        //2D array that holds the count of each words length per line
-        //[0] initially holds all the words
-        //[x] holds no words; loop will overwrite the array and split out the last int
-
-        for (int i : wordsLetterCount[0]) {
-            wordsLetterCount[0][i] = words[i].length();
-        } //nabs the lengths of the characters in each word and adds them to the first line of the array
-        int[] spacesCount = new int[lineSplits]; //will store how many spaces based on word count per line - 1;
-
-        for(int i = 0; i < lineSplits; i++) {
-
-
-        }
-
-
-
-
-        return balancedText;
-    }
-
-
-
-
-
-
-
-    //this could be changed to void drawTextInDisplayArea (String, Rectangle)
-    private Font setFontSize(String displayText, int displayWidth, int displayHeight) { //displayText needs to be fed in as "Words with Spaces between them"
-        Font broadwayBaseLine50 = new Font("Broadway", Font.PLAIN, 50); //For Testing
-
-        String[] words; // contains all the words in the text to be displayed. will be broken up into multiple lines?
+    private void drawTextInDisplayArea(String displayText, Rectangle displayArea) {
+        String[] words; // contains all the words in the text to be displayed.
             if (displayText.contains(" ")) {
                 words = displayText.split(" ");
             } else {
                 words = new String[]{displayText};
             }
-        String widestWord = getWidestLine(words, null);
+        String widestWord;
 
-        int pixelWidth; //used to check the pixel with of the selected String at specified font size
+        int displayHeight = displayArea.height;
+        int displayWidth = displayArea.width;
+
+        int pixelHeight, pixelWidth;
+
         int fontSize = 50; //largest font size to test
-        int multiLineFontSize = 38; //largest font size for multiLine to test
+        int multiLineFontSize = 50; //largest font size for multiLine to test
 
         int lineCount = 1; //keeps track of how many lines to split
-        int[] wordCount = new int[]{words.length}; //keeps track of how many words are each line when splitting occurs
 
         Font currentFont = null; //sets the font to be used for displaying text by dynamically changing size
 
-        List<String> lineToBeSplit = new ArrayList<>(List.of(displayText)); //holds the lines being split and balanced
-        //starts with displayText because balanceLine method will take all the strings and balance it across
-
         List<String> balancedLine = new ArrayList<>(List.of(displayText)); //to hold the dynamically split and balanced array of lines
-        //starts with displayText because it wont need to be updated if it stays a single line
+        //starts with displayText because it won't need to be updated if it stays a single line
 
 
         boolean[] textPass = {false, false}; // { [0] WHILE LOOP PASS FLAG // [1] MULTILINE SPLIT FLAG }
@@ -226,189 +190,87 @@ public class DisplayUI extends FileLoader {
 
             if(!textPass[1]) {
                 //Runs text through dynamic sizing until text is 8pt OR a check at 32pt detects multiple words and splits it
+                pixelHeight = getPixelHeightOfWord(displayText,currentFont);
                 pixelWidth = getPixelWidthOfWord(displayText, currentFont);
-                textPass = textWidthCheck(fontSize, pixelWidth, displayWidth, displayHeight, displayText, currentFont);
+                textPass = textWidthCheck(pixelHeight, pixelWidth, displayWidth, displayHeight, displayText, currentFont);
                 //resets boolean after checking if the specified text (displayText) fits inside the specified dimensions
-                if (!textPass[1]) {
-                    //if not multiline is still false, keep decreasing font size until 8.
+                if (!textPass[0] && !textPass[1]) {
+                    //if it did not pass and multiline is still false, keep decreasing font size until 8.
                     //either 8 or pass will exit out of this while loop with a 'single' word line
+                    // 8 will pass because of conditions in textWidthCheck
                     fontSize--;
                     continue;
+                }else if(textPass[1]) {
+                    continue; //reset loop to reset font
                 }
             } //if MultiLine Flag is not triggered, text will be tested to fit on one line.
             //if above passes, While loop will be exited with text fitting on one line in the specified space, and a font size saved for that.
 
             //MULTILINE TRIGGERED// -> multiple words detected in the displayText and lower bound of 32pt reached. Text will now be split to multiple lines:
 
-                if (words.length == 2) { //Checks word count if there are only two words
+                if (words.length == 2 && textPass[1]) { //Checks word count if there are only two words,
+                    balancedLine = Arrays.asList(words);
+                    widestWord = getWidestLine(null, balancedLine);
+                    pixelHeight = getPixelHeightOfWord(widestWord, currentFont);
                     pixelWidth = getPixelWidthOfWord(widestWord, currentFont);
                     lineCount = 2;
-                    textPass = textWidthCheck(multiLineFontSize, pixelWidth, displayWidth, displayHeight, widestWord, currentFont);
+                    textPass = textWidthCheck(pixelHeight, pixelWidth, displayWidth, displayHeight, widestWord, currentFont);
                     if (!textPass[0]) {
                         multiLineFontSize--;
                     }
-                } else if (words.length >= 3) {
-                    if(lineCount < 2) { //makes sure there's is at least two lines
+                } else if (words.length >= 3 && textPass[1]) {
+                    if(lineCount < 2) { //makes sure there's at least two lines
                         lineCount = 2;
                     }
-
-                    //NEW:
-                    //lineCount = 2 + loopCounter; (no increment this later in statement
-                    //lineToBeSplit.add(0, displayText); I dont think this matters now as the list is loaded with the displaytext to start
-                    //balancedLine = balanceLine(line, wordCount, lineCount);
-
-                    //get widest line in balanced line
-                    //pixelWidth = getPixelWidthOfWord(widestLine, currentFont);
-
-                    //textPass = textWidthCheck(multiLineFontSize, pixelWidth. displayWidth, displayHeight, widestLine, currentFont);
-                    if(!textPass[0]) {
+                    balancedLine = FormatText.balanceMultiline(displayText,lineCount); //updates the balanced line with the displayText split evenly across lineCount # of lines.
+                    widestWord = getWidestLine(null,balancedLine);
+                    pixelWidth = getPixelWidthOfWord(widestWord,currentFont);
+                    pixelHeight = (getPixelHeightOfWord(widestWord,currentFont) + 2) * lineCount; //height of lines + 2px spacing
+                    textPass = textWidthCheck(pixelHeight, pixelWidth, displayWidth, displayHeight, widestWord, currentFont);
+                    //if the ext passes here, the rest of the conditions below will be skipped.
+                    if(!textPass[0]) { //if text does not pass, size is decreased.
                         multiLineFontSize--;
+                        if(words.length != lineCount) { // if not already at max lines per words
+                            //split to more lines
+                            if (multiLineFontSize == 32 && lineCount == 2) {
+                                multiLineFontSize = 42;
+                                lineCount++;
+                            }else if(multiLineFontSize == 28 && lineCount == 3) {
+                                multiLineFontSize = 38;
+                                lineCount++;
+                            }else if(multiLineFontSize == 24 && lineCount >= 4) {
+                                //with 4+ lines, increment lines every time text gets down to 24
+                                multiLineFontSize = 36;
+                                lineCount++;
+                            }
+                        }
                     }
-
-
-
-
-
-                   //loopcounter++;
                 }
         }
-
-
         //once out of loop
         //currentFont will be the proper text size
-        //line count will keep track of how many text lines there are.
-        //currentLine will keep track of the first line of the text box.
+        //lineCount will keep track of current number of lines.
+        //balancedLine will contain all lines of text to be displayed, on however many lines it takes to fit box at currentFont size.
 
-        //function to get longest segment out of a string[]. loops through strings and combines them ( word count - 1 ) and -- per loop.
-        // int splitcount = 2; which is also line count
-        // SAMPLE  "THIS IS A SIX WORD STRING"
-        //loop 1 -> "THIS IS A SIX WORD" and "STRING" 17 / 6                        //// first string shorter than the last string
-        //loop 2 -> "THIS IS A SIX" and "WORD STRING" 13 / 11
-        //loop 3 -> "THIS IS A" and "SIX WORD STRING" 9 / 15 -> trigger.
-        // until the second string is longer than the first. by character length.
-        //then it will spit out a String[] that compares the last two loops and  shorter of loop2 [0] or loop3 [1] wins.
-        //textWidth Check is Ran on the longer string but only until multiline font size is 75% of its starting (38)/4*3 = 28
-        //if " " space count in each String in [] is <= 1 (AND fontsize > 27) ; keep shrinking font size (until 28)
-        //otherwise split another line can be split.
-        //set font size back to 38?
-        //new loop and splitcount +1
-        //loop 1 -> "THIS IS A SIX" and "WORD" and "STRING" 13 / 4 / 6 (loop looks at last 2 in String[]; RECURSION?S??S
-        //loop 2 -> "THIS IS A" and "SIX WORD" and "STRING" 9 / 8 / 6
-        // (if last 2 in [] do not have " "; then move a word from string[0] to [1]
-        //loop 3 -> "THIS IS A" and "SIX" and "WORD STRING" 9 / 3 / 11 -> trigger
-        // (if there is a " ", then the second word is split from [1] to [2]
-        //loop 4 -> "THIS IS A" and "SIX WORD" and "STRING" 9 / 8 / 6
-                // -> length is compared like above; shorter of loop2 [1] or loop3 [2] wins. and then loop continues with first two
-        //loop 5 -> "THIS IS" and "A SIX WORD" and "STRING" 7 / (10 / 6) -> either trigger?
-                // this winner is then compared to the first string. so loop 4 is the output to check if it wins
-        //textwidth is checked again, until font is another 75% of new current so (28)/4*3 = 21
-        //again if space count is <= 1; keep shrinking until 21;
-        //if the words still dont fit after 3 lines at 21 font size
-        //new loop splitcount +1 (4 currently)
-        //loop1 -> "THIS IS A" and "SIX" and "WORD" and "STRING" 9 / 3 / 4 / 6
-        //loop2 -> "THIS IS" and "A SIX" and "WORD" and "STRING" 7 / 5 / 4 / 6  ( word is moved through until last one gains a word)
-        //loop3 -> "THIS IS" and "A" and "SIX WORD" and "STRING"
-        //loop4 -> THIS IS / A / SIX / WORD STRING
-        //
+        //Text can now be output to be displayed
+        drawTextInDisplayArea(balancedLine,currentFont,displayArea);
 
-        //but what if
-        // loop 1 -> IT IS A / SIX / WORD / STRING  - 7 / 3 / 4 / 6
-        // loop 2  -> "IT IS" and "A SIX" and "WORD" and "STRING" 5 / 5 / 4 / 6 (should be ideal?) -> trigger
+    }
 
-        // loop 3 -> 7 / 3 / 4 / (6) won loop1[3] vs loop2[4]
-        // loop 4 -> IT IS / A SIX / WORD / STRING - 5 / 5 / 4 / (6)
-        // loop 5 -> loop3  (1) wins again due to 3 vs 4. -> 7 / 3 / (4 / 6)
-        // loop 6 -> IT IS / A SIX / WORD / STRING - 5 / 5 / ( 4 / 6 )
-        // loop 7 -> IT / IS A SIX / WORD / STRING - 2 / 8 / (4/6) -> trigger
-        // loop 6 wins and then this is tested for width
+    private void drawTextInDisplayArea (List<String> displayText, Font currentFont, Rectangle displayArea) {
+        setFont(g2D, currentFont);
 
 
-
-        /// math
-
-        // 2_2_2_2_2 / 2 / 2 / 2 -> 14 / 2 / 2 / 2 (8 words 2 letter each)
-        // 2 2 2 2 / 2 2 / 2 / 2 -> 11 / 5 / 2 / 2
-        // 2 2 2 2 / 2 / 2 2 / 2 -> 11 / 2 / 5 / 2
-        // 2 2 2 2 / 2 / 2 / 2 2 -> 11 / 2 / 2 / 5 no " " in [2] to feed into [3]
-        // 2 2 2 / 2 2 / 2 / 2 2 -> 8 / 5 / 2 / 5
-        // 2 2 2 / 2 / 2 2 / 2 2 -> 8 / 2 / 5 / 5
-        // 2 2 2 / 2 / 2 / 2 2 2 -> 8 / 2 / 2 / 8 WIN
-        // 2 2 / 2 2 / 2 / 2 2 2 -> 5 / 2 / 2 / 8 -> trigger
-        // 2 2 2 / 2 / 2 / 2 2 2 -> 8 / 2 / 2 / (8)
-        // 5 5 2
-        // 5 2 5 WIN -> WIN (shorter or first iteration in case of tie) so 5 2 5 8 is bad line output
-        // 2 5 5
-        // needs extra rules for word count vs split count
-
-        //now reverse it to balancE?
-        // 2 2 2 / 2 2 / 2 / 2 2 ->  8 5 2 5
-        // 2 2 2 / 2 / 2 2 / 2 2 -> 8 2 5 5 wins
-        // 2 2 2 / 2 / 2 / 2 2 2 -> 8 2 2 8
-        // 2 2 2 / 2 / 2 2 / 2 2 -> 8 2 5 (5)
-        // 2 2 / 2 2 / 2 2 / 2 2 -> 5 5 5  win
-        // 5 2 8 -> trigger
-        //
-
-
-        //"Dude you
-        // would a
-        // try an
-        // oboe car"
-        // 4_3_5_1_3 / 2 / 4 / 3 -> 20.2.4.3
-        // 4 3 5 1 / 3 2 / 4 / 3 -> 16.6.4.3
-        // 4 3 5 1 / 3 / 2 4 / 3 -> 16.3.7.3
-        // 4 3 5 1 / 3 / 2 / 4 3 -> 16.3.2.8 > repeat
-        // 4 3 5 / 1 3 / 2 / 4 3 -> 14.5.2.8
-        // 4 3 5 / 1 / 3 2 / 4 3 -> 14.1.6.8
-        // 4 3 5 / 1 / 3 / 2 4 3 -> 14.1.3.11 WIN
-        // 4 3 / 5 1 / 3 / 2 4 3 -> 8.7.3.11 -> trigger
-        // 4 3 5 / 1 / 2 // -> 14.1.2
-        // 4 3 / 5 1 / 2 // -> 8.7.2
-        // 4 3 / 5 / 1 2 // -> 8.5.4 > repeat
-        // 4 / 3 5 / 1 2 // -> 4.9.4 -> trigger + WIN
-        // 4 / 3 5 // -> 4.9 -> loop skipped
-
-        //Balance currently at: // 4 / 3 5 / 1 2 / 3 4 3 = 4.9.4.12
-        //REVERSE             : // 3 4 3 / 2 1 / 5 3 / 4 = 12.4.9.4
-
-
-        // 3 4 3 / 2 1 / 5 3 / 4 -> 12.4.9.4
-        // 3 4 / 3 2 1 / 5 3 / 4 -> 8.8.9.4
-        // 3 4 / 3 2 / 1 5 3 / 4 -> 8.6.11.4
-        // 3 4 / 3 2 / 1 5 / 3 4 -> 8.6.7.8 > repeat WIN
-        // 3 / 4 3 2 / 1 5 / 3 4 -> 3.11.7.8 -> trigger
-
-        // 3 4 / 3 2 / 1 5 // 8.6.7 same trigger and this will win again
-        // and again
-        // reversed : 4 3 // 5 1 // 2 3 // 4 3 yeah that works!
-
-
-
-
-
-        // so what if.
-        // gets word count in the string[] and divides split count into that.
-        // split count of 2 lines with 8 words = start with 4 words per line
-        // 2 2 2 2 / 2 2 2 2 WIN
-        // 2 2 2 / 2 2 2 2 2
-        // 5 2 2 2 / 2 2 2 2
-        // 5 2 2 / 2 2 2 2 2 even win
-        // 5 2 / 2 2 2 2 2 2 trigger
-
-        //loop4 -> "THIS IS" and "A" and "SIX" and "WORD STRING"
-
-
-        //do a modulus method call to itself in the return statement if a flag is true or some shit
-        return currentFont;
     }
 
 
-    private boolean[] textWidthCheck(int fontSize, int pixelWidth, int displayWidth, int displayHeight, String displayText, Font currentFont) {
+    private boolean[] textWidthCheck(int pixelHeight, int pixelWidth, int displayWidth, int displayHeight, String displayText, Font currentFont) {
         boolean[] textPass = {false, false};
+        int fontSize = currentFont.getSize();
         if (fontSize > 32 &&
                 (pixelWidth > (displayWidth - 4) ||
-                        getPixelHeightOfWord(displayText, currentFont) > (displayHeight - 4))) {
-            //Font size too wide, fail and try again
+                        pixelHeight > (displayHeight - 4))) {
+            //Font size too wide or tall, fail and try again
             return textPass;
         } else if (pixelWidth <= displayWidth - 4) {
             //text size fits within the display and starts out at least being >= 32 font size

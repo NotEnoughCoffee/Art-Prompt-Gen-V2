@@ -1,6 +1,8 @@
-package dev.apg.utility;
+package dev.scrapped;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class DynamicSorting {
 
@@ -16,18 +18,24 @@ public class DynamicSorting {
 
         //UNIT TEST FOR BALANCER?? //
 //
-        int[][] testArray =
-                {new int[]{4,3,5,1,3,2,4,3,  5, 8,3,4,2},
-                        {},
-                        {},
-                        {},
-                        {},
-                        {},
-                        {},
-                        {},
-                        {},
-                        {}};
+//        int[][] testArray =
+//                {new int[]{4,3,5,1,3,2,4,3,  5, 8,3,4,2},
+//                        {},
+//                        {},
+//                        {},
+//                        {},
+//                        {},
+//                        {},
+//                        {},
+//                        {},
+//                        {}};
 
+        int[][] testArray = new int[10][];
+        testArray[0] = new int[]{4,3,5,1,3,2,4,3,  5, 8,3,4,2};
+        for(int i = 1; i < testArray.length; i++) {
+            testArray[i] = new int[]{};
+        }
+        System.out.println(Arrays.deepToString(testArray));
         int[] spacesCount = new int[]{7,0,0,0,0,0,0,0,0,0};
         int lineCount = 10;
 
@@ -89,10 +97,147 @@ public class DynamicSorting {
 
         //REVERSER END//
 
+        /////// stringtoINT ARRAY TEST:///////////
+
+        String alot = "Far far away behind the word mountains far from the countries Vokalia and Consona there live the blind texts Separated they live in Bookmarks grove right at the coast of the Semantics a large language ocean A small river named Duden flows by their place and supplies it with the necessary regelia It is a paradise country in which roasted parts of sentences fly into your mouth Even the all-powerful Pointing has no control about the blind texts it is an almost odd life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar The Big Oxmox advised her not to do so because there were thousands of bad Commas wild Question Marks and devious Semikoli but the Little Blind Text didn’t listen She packed her seven versalia put her initial into the belt and made herself on the way When she reached the first hills of the Italic Mountains she had a last view back on the skyline of her hometown Bookmarks grove the headline of Alphabet Village and the subline of her own road the Line Lane Pityful a rethoric question ran over her cheek then";
+
+        //Notes: Large size of above text gives issue. But the program works at a line of about 20 words just fine. Which... is way more than what should be going into this in the first place.
+
+
+        //intended use is for the prompt title bar; and displaying small category names and selection choices which are usually 1-2; no more than 5-6 words
+
+        //i think what is happening is the array is so unbalanced to start that by the time it loads the back end of the array it just cancels out before it fixes anything. so when it gets to the mid point, the back of the array is super full, and the front is loaded with singluar words per line.
+
+        //perhaps... evening out the array first could fix that issue.
+
+        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println();
+//        String testString = "I hope no one makes a string this large because boy this thing sure had better be able to handle it";
+        //testString = alot;
+        String testString = "The Title Of The Prompt GARY";
+        int testStringLineCount = 5;
+        //int[][] smalltester = evenOutArray(alot, testStringLineCount);
+        int[][] createdArray = stringToIntArrays(testString,testStringLineCount);
+        System.out.println(testString);
+        System.out.println(Arrays.deepToString(createdArray));
+        int[] spacesCount2 = spacesCountUpdate(createdArray);
+        int[][] filledArray2 = fillArray(createdArray,testStringLineCount);
+        //int[] spacesCount2 = spacesCountUpdate(smalltester);
+        spacesCount2 = spacesCountUpdate(filledArray2);
+        int[][] balancedArray2 = balance(filledArray2, spacesCount2, testStringLineCount);
+
+//        List<String> finalSplitTEST = intArrayToStringList(balancedArray2,testString);
+//        finalSplitTEST.forEach(System.out::println);
+
+
+
+        int[][] reversedArray2 = reverser(balancedArray2);
+        spacesCount2 = spacesCountUpdate(reversedArray2);
+        int[][] rebalancedArray2 = balance(reversedArray2, spacesCount2, testStringLineCount);
+        int[][] fixedBalancedArray2 = reverser(rebalancedArray2);
+        System.out.println(Arrays.deepToString(fixedBalancedArray2));
+
+        //now turn array into string
+        List<String> finalSplit = intArrayToStringList(fixedBalancedArray2,testString);
+        finalSplit.forEach(System.out::println);
+
+        System.out.println("=====================");
+        int[][] anotherTest = evenOutArray(testString,testStringLineCount);
+        List<String> straightTest = intArrayToStringList(anotherTest,testString);
+        straightTest.forEach(System.out::println);
+        //int[][] smalltester = evenOutArray(alot, 7);
+//        for(int[] ints : smalltester) {
+//            System.out.println(Arrays.toString(ints));
+//        }
+
     }
 
 
     //NEW//
+
+    //String<->int[][] Conversion
+
+    public static List<String> intArrayToStringList (int[][] rebalancedArray, String originalString) {
+        List<String> returnList = new ArrayList<>();
+        String[] words = originalString.split(" ");
+        int counter = 0;
+
+        for(int i = 0; i < rebalancedArray.length; i++) {
+            StringBuilder wordsOnThisLine = new StringBuilder();
+            for(int j = 0; j < rebalancedArray[i].length; j++){
+                wordsOnThisLine.append(words[counter]).append(" ");
+                counter++;
+            }
+            wordsOnThisLine.setLength(wordsOnThisLine.length() -1);
+            returnList.add(i, String.valueOf(wordsOnThisLine));
+
+        }
+
+
+
+        return returnList;
+
+    }
+
+    public static int[][] evenOutArray (String string, int lineCount) {
+        String[] words = string.split(" ");
+        int wordCount = words.length; // number of words we are evenly distributing
+        int counter = 0; // will keep track of words added to array
+        int avgWordsPerLine = wordCount / lineCount;
+        boolean isRemainder = false;
+        int remainder = 0;
+        if( wordCount % lineCount != 0 ) { // i.e there is something left over.
+            remainder = wordCount % lineCount; // add one extra word to the first i < remainder "lines in the loop
+            isRemainder = true;
+        }
+
+        int[][] returnArray = new int[lineCount][];
+        for(int i = 0; i < lineCount; i++) {
+            StringBuilder currentLine = new StringBuilder();
+            for(int k = 0; k < avgWordsPerLine; k++) {
+                //adds average number of words to the current line
+                currentLine.append(words[counter]).append(" ");
+                counter++;
+            }
+            if(isRemainder && remainder > 0) {
+                //if flag is triggered, and remainder count is still > 0; an extra word will be added to the line.
+                //all the words end up in the array?
+                currentLine.append(words[counter]).append(" ");
+                counter++;
+                remainder--;
+            }
+            System.out.println("Counter = " + counter + " || Words Count = " + wordCount);
+
+            //once line is built it is fed into overloaded function below, and a singular array is made.
+            //loop repeated until all lines are filled will hopefully no words remaining
+            returnArray[i] = stringToIntArrays(String.valueOf(currentLine)).clone();
+        }
+
+        return returnArray;
+    }
+
+    public static int[] stringToIntArrays(String string) {
+        int[][] tempArrays  = stringToIntArrays(string, 1);
+
+        return tempArrays[0].clone();
+    }
+
+    public static int[][] stringToIntArrays (String string, int lineCount) {
+        //this returns a int[0] = { filled array where each int is the length of each word in the string} and all other {} are empty based on linecount. linecount needs a check that it is at least 2
+        String[] split = string.split(" ");
+        int[][] returnArray =  new int[lineCount][];
+        int[] letterCount = new int[split.length];
+        for (int i = 0; i < split.length; i++) {
+            letterCount[i] = split[i].length();
+        }
+        returnArray[0] = letterCount.clone();
+        for(int i = 1; i < returnArray.length; i++) {
+            returnArray[i] = new int[]{};
+        }
+        return  returnArray;
+    }
+
+
 
 
     //ArraySetup:
@@ -228,8 +373,11 @@ public class DynamicSorting {
                     }
                     System.out.println(alteredArray[K].length + " > 1 && K: " + K + " < " + lastLine);
 
-                    //so if above if gets triggered. below if wont be because [k].length = 1 // needs to skip somehow
-                    //if the line before this one is not lie[0] and k.length = 1
+                    //" I dont know why Im here triggers because the below doesnt pass:"
+                    //this happens because K.length = 1;
+                    // so because that is triggered, it just skips down to the next 'lastline'
+                    // that sets i = 1; causing this to loop endlessly if it isnt there
+                    // that causes the i loop to exit because i = 0; and the while loop moves us on to the next line
 
                     if (alteredArray[K].length > 1 && K < lastLine) {
                         previousLineSum = getSum(alteredArray[lastLine - 1]) + spaces[lastLine - 1];
@@ -325,6 +473,9 @@ public class DynamicSorting {
             lastLine--;
             System.out.println("I touched here " + lastLine);
             spaces = spacesCountUpdate(alteredArray);
+            if(lastLine == 0 ) {
+                lastLine++;
+            }
             if(lastLine < 0) {
 
                 break;
