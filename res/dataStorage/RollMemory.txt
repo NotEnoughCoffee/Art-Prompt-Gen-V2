@@ -15,7 +15,7 @@ Llama Challenge,Protogen,Flying,Red,Suprematism,Atomic Age
 Test Challenge,Ancient History,Natural Disaster,Classic Antiquity,Street Art
 Test Challenge,Kangaroo,Glow In The Dark,Psychedelic Art,Falcon
 Llama Challenge,Gecko,Future,Party,Smithing,Painted
-Llama Challenge,Monochrome,Graffiti Style,Waterfall,Evening,Pine Marten
-Torpedo Challenge,Baking,Bathroom
+Test Challenge,Caribou,Floating,Skunk,Ink
+Test Challenge,Monochrome,Minimalism,Patterned,Psychedelic Art
 A lot of Stuff,Super Flat,Surrealism,Dark,Afternoon,Iridescent,African Wild Dog,Expressionism
-17
+19
