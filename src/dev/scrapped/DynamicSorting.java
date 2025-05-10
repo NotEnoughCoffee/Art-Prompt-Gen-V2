@@ -115,7 +115,7 @@ public class DynamicSorting {
 //        String testString = "I hope no one makes a string this large because boy this thing sure had better be able to handle it";
         //testString = alot;
         String testString = "The Title Of The Prompt GARY";
-        int testStringLineCount = 5;
+        int testStringLineCount = 3;
         //int[][] smalltester = evenOutArray(alot, testStringLineCount);
         int[][] createdArray = stringToIntArrays(testString,testStringLineCount);
         System.out.println(testString);

@@ -16,6 +16,8 @@ public class SaveButton extends ClickableButton {
     }
     @Override
     protected void doTheThing() {
-        FileLoader.saveScreen(gui, new Rectangle(35,150,730,350));
+        if(gui.challenge.currentRollMemory != null) {
+            FileLoader.saveScreen(gui, new Rectangle(35, 150, 730, 350));
+        }
     }
 }

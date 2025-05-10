@@ -3,9 +3,11 @@ package dev.apg.gui;
 import dev.apg.Category;
 import dev.apg.Challenge;
 import dev.apg.Selection;
+import dev.apg.gui.animation.RoamingShape;
 import dev.apg.utility.FileLoader;
 import dev.apg.utility.FormatText;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -14,10 +16,7 @@ import java.util.List;
 public class DisplayUI extends FileLoader {
 
     //BASIC SETUP//
-    public static String promptButtonText;
-    public String uiText;
-    public int x, y;
-    private final Rectangle resultsDisplayDimensions = new Rectangle(80, 212, 640, 220);
+    private final Rectangle resultsDisplayDimensions = new Rectangle(85, 212, 640, 220);
     public static List<Selection> currentRollMemory;
 
     //GUI SETUP//
@@ -27,6 +26,9 @@ public class DisplayUI extends FileLoader {
     BufferedImage background;
     final String backgroundImageFileLocation = "/graphics/90s_Background_V2.png";
 
+    RoamingShape roamingShape, roamingShape2;
+    Timer timer;
+
     //INITIALIZATION//
     public DisplayUI(GUI gui) {
         this.gui = gui;
@@ -34,6 +36,10 @@ public class DisplayUI extends FileLoader {
         ariel_32 = new Font("Ariel", Font.BOLD, 32);
         ariel_28 = new Font("Ariel", Font.BOLD, 28);
         ariel_72 = new Font("Ariel", Font.BOLD, 72);
+
+        roamingShape = new RoamingShape(gui, new Rectangle(50, 50, 25, 25));
+        roamingShape2 = new RoamingShape(gui, new Rectangle(400,400,50,50));
+        startTimer();
     }
 
     //DRAW METHODS//
@@ -46,41 +52,33 @@ public class DisplayUI extends FileLoader {
         //MARKED FOR UPDATE//
         setFont(g2d, ariel_32);
         g2d.setColor(Color.black);
-        //                 //
-
         drawText();
+
+        g2d.setColor(Color.orange);
+        roamingShape.moveTowardsDestination();
+        g2d.fill(roamingShape.rectangle);
+
+        g2d.setColor(Color.red);
+        roamingShape2.moveTowardsDestination();
+        g2d.fill(roamingShape2.rectangle);
+
+    }
+
+    public void startTimer() {
+        //refreshes GUI every 40 milliseconds
+        this.timer = new Timer(40, e -> gui.refresh());
+        timer.start();
     }
 
     public void drawText() {
-        resetUIText();
-        //setUIText(gui.rollText);
         g2D.setColor(Color.black);
         drawPromptButtonText();
         setResultsDisplay(currentRollMemory);
-
-
-
-        //REMOVE//
-        //Below is a temporary solution to display roll text until challenge class changes are implemented
-//        String[] text = uiText.split(";;");
-//        y = 150 + (350 / 2) - ((text.length - 1) * 39) / 2;
-//        for (String s : text) {
-//            getFontCenterX(s);
-//            g2D.drawString(s, x, y); //use this to draw multiple strings with a loop
-//            y += 40;
-//        }
-        //REMOVE//
     }
-
-    //FOR REMOVAL//
     public void drawPromptButtonText() {
-
-        setFont(g2D, ariel_72);
-        getFontCenterX(Challenge.name);
-        y = 140; //35 + (105/2) +72/4;
-        g2D.drawString(Challenge.name, x, y);
-
-        setFont(g2D, ariel_32);
+        g2D.setColor(Color.black);
+        Rectangle promptArea = new Rectangle(126,50, 558 ,125);
+        drawTextInDisplayArea(Challenge.name,promptArea);
     }
 
     public void setResultsDisplay(List<Selection> selections) {
@@ -157,7 +155,7 @@ public class DisplayUI extends FileLoader {
 
         int pixelHeight, pixelWidth;
 
-        int fontSize = 50; //largest font size to test
+        int fontSize = 72; //largest font size to test
         int multiLineFontSize = 38; //largest font size for multiLine to test
 
         int lineCount = 1; //keeps track of how many lines to split
@@ -171,64 +169,43 @@ public class DisplayUI extends FileLoader {
         boolean[] textPass = {false, false}; // { [0] WHILE LOOP PASS FLAG // [1] MULTILINE SPLIT FLAG }
 
         while (!textPass[0]) {
-            currentFont = new Font("Broadway", Font.PLAIN, (textPass[1] ? multiLineFontSize : fontSize)); //sets the current font size using updated size from previous loop
+            currentFont = new Font("Broadway", Font.PLAIN, (textPass[1] ? multiLineFontSize : fontSize));
 
-            if(!textPass[1]) {
-                //Runs text through dynamic sizing until text is 8pt OR a check at 32pt detects multiple words and splits it
+            if(!textPass[1]) { //Runs text through dynamic sizing until text is 8pt OR a check at 20pt detects multiple words and splits it
                 pixelHeight = getPixelHeightOfWord(displayText,currentFont);
                 pixelWidth = getPixelWidthOfWord(displayText, currentFont);
                 textPass = textWidthCheck(pixelHeight, pixelWidth, displayWidth, displayHeight, displayText, currentFont);
                 //resets boolean after checking if the specified text (displayText) fits inside the specified dimensions
+
                 if (!textPass[0] && !textPass[1]) {
-                    //if it did not pass and multiline is still false, keep decreasing font size until 8.
-                    //either 8 or pass will exit out of this while loop with a 'single' word line
-                    // 8 will pass because of conditions in textWidthCheck
                     fontSize--;
                     continue;
                 }else if(textPass[1]) {
                     continue; //reset loop to reset font
                 }
-            } //if MultiLine Flag is not triggered, text will be tested to fit on one line.
-            //if above passes, While loop will be exited with text fitting on one line in the specified space, and a font size saved for that.
-
-            //MULTILINE TRIGGERED// -> multiple words detected in the displayText and lower bound of 32pt reached. Text will now be split to multiple lines:
-
-//                if (words.length == 2 && textPass[1]) { //Checks word count if there are only two words,
-//                    balancedLine = Arrays.asList(words);
-//                    widestWord = getWidestLine(null, balancedLine);
-//                    pixelHeight = getPixelHeightOfWord(widestWord, currentFont);
-//                    pixelWidth = getPixelWidthOfWord(widestWord, currentFont);
-//                    lineCount = 2;
-//                    textPass = textWidthCheck(pixelHeight, pixelWidth, displayWidth, displayHeight, widestWord, currentFont);
-//                    if (!textPass[0]) {
-//                        multiLineFontSize--;
-//                    }
-//                } else
-                    if (words.length >= 2 && textPass[1]) {
-                    if(lineCount < 2) { //makes sure there's at least two lines
-                        lineCount = 2;
-                    }
-                    balancedLine = FormatText.balanceMultiline(displayText,lineCount); //updates the balanced line with the displayText split evenly across lineCount # of lines.
-                    widestWord = getWidestLine(null,balancedLine);
-                    pixelWidth = getPixelWidthOfWord(widestWord,currentFont);
-                    pixelHeight = getPixelHeightOfWord(widestWord,currentFont) * lineCount; //height of all lines
-                    textPass = textWidthCheck(pixelHeight, pixelWidth, displayWidth, displayHeight, widestWord, currentFont);
-                    if(!textPass[0]) { //if text does not pass, size is decreased.
-                        multiLineFontSize--;
-                        if(words.length != lineCount) { // if not already at max lines per words -> split more lines
-                            if (multiLineFontSize == 31 && lineCount == 2) {
-                                multiLineFontSize = 42;
-                                lineCount++;
-                            }else if(multiLineFontSize == 27 && lineCount == 3) {
-                                multiLineFontSize = 38;
-                                lineCount++;
-                            }else if(multiLineFontSize == 23 && lineCount >= 4) { //with 4+ lines, increment lines every time text gets down to 24
-                                multiLineFontSize = 36;
-                                lineCount++;
-                            }
+            }
+            if (words.length >= 2 && textPass[1]) {
+                if (lineCount < 2) { //makes sure there's at least two lines
+                    lineCount = 2;
+                }
+                balancedLine = FormatText.balanceMultiline(displayText, lineCount); //text updated and split into List
+                widestWord = getWidestLine(null, balancedLine);
+                pixelWidth = getPixelWidthOfWord(widestWord, currentFont);
+                pixelHeight = getPixelHeightOfWord(widestWord, currentFont) * lineCount; //height of all lines
+                textPass = textWidthCheck(pixelHeight, pixelWidth, displayWidth, displayHeight, widestWord, currentFont);
+                if (!textPass[0]) { //if text does not pass, size is decreased.
+                    multiLineFontSize--;
+                    if (words.length != lineCount) { // if not already at max lines per words -> split more lines
+                        if (multiLineFontSize == 20 && (lineCount == 2 || lineCount == 3)) {
+                            multiLineFontSize = 38;
+                            lineCount++;
+                        } else if (multiLineFontSize == 16 && lineCount >= 4) {
+                            multiLineFontSize = 36;
+                            lineCount++;
                         }
                     }
                 }
+            }
         }
         drawTextInDisplayArea(balancedLine,currentFont,displayArea); //Text drawn
     }
@@ -237,13 +214,14 @@ public class DisplayUI extends FileLoader {
         setFont(g2D, currentFont);
         //takes a List and Font and draws each line as a text box centered in the displayArea's bounds based.
         int centeredX;
-        int centeredY = (displayArea.height/2 + displayArea.y) + ((displayText.size() * getPixelHeightOfWord("EXAMPLE", currentFont)) / 4) - (getPixelHeightOfWord("EXAMPLE",currentFont) * (displayText.size() - 1))/4*3;
+        int centeredY = 1 + (displayArea.height/2 + displayArea.y) + ((displayText.size() * getPixelHeightOfWord(displayText.get(0), currentFont)) / 4) - (getPixelHeightOfWord(displayText.get(0),currentFont) * (displayText.size() - 1))/4*3;
 
         for(String text : displayText) {
             centeredX = (displayArea.x + displayArea.width/2) - getPixelWidthOfWord(text,currentFont)/2;
             g2D.drawString(text,centeredX,centeredY);
-
-            g2D.draw(displayArea);
+                    if(!g2D.getColor().equals(Color.black)) {
+                        g2D.draw(displayArea); // FOR TESTING -> REMOVE
+                    }
             centeredY += getPixelHeightOfWord(text,currentFont);
         }
     }
@@ -253,9 +231,9 @@ public class DisplayUI extends FileLoader {
         //checks if displayText fits in displayArea based on currentFont -> which is incremented each time this method is run inside a loop
         boolean[] textPass = {false, false};
         int fontSize = currentFont.getSize();
-        int innerHeight = 15;
-        int innerWidth = 20;
-        if (fontSize > 20 &&
+        int innerHeight = 10;
+        int innerWidth = 15;
+        if (fontSize > 16 &&
                 (pixelWidth > (displayWidth - innerWidth) ||
                         pixelHeight > (displayHeight - innerHeight))) {
             //Font size too wide or tall, fail and try again
@@ -325,21 +303,9 @@ public class DisplayUI extends FileLoader {
     }
 
     //FORMATTING//
-    public void resetUIText() {
-        uiText = "";
-        x = 0;
-        y = 0;
-    }
     public void setFont(Graphics2D g2d, Font font) {
         g2d.setFont(font);
     }
-    public void setUIText (String string) {
-        this.uiText = string;
-    }
-    public void getFontCenterX(String text) {
-        int length = (int) g2D.getFontMetrics().getStringBounds(text, g2D).getWidth();
-        x = GUI.screenWidth / 2 - length / 2;
-    } //sets X coordinate so text is centered on screen based on the strings width
 
     public int getPixelWidthOfWord(String word, Font font) {
         return (int) g2D.getFontMetrics(font).getStringBounds(word, g2D).getWidth();
@@ -348,10 +314,4 @@ public class DisplayUI extends FileLoader {
     public int getPixelHeightOfWord(String word, Font font) {
         return (int) g2D.getFontMetrics(font).getStringBounds(word,g2D).getHeight();
     }
-
-        //UNIMPLEMENTED METHODS//
-
-    //public void wordWrap (String[] line) {} -> potentially make on FormatText class
-
-
 }

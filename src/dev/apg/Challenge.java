@@ -86,6 +86,10 @@ public class Challenge extends FileLoader {
         Challenge.name = challengesList.get(0)[0];
     }
 
+    public void setPromptButton() {
+        String[] currentChallenge = challengesList.get(challengeIndex);
+        Challenge.name = currentChallenge[0];
+    }
     //RUN CHALLENGE HANDLERS//
 
     //Runs Currently Selected Challenge

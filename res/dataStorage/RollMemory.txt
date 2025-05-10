@@ -1,21 +1,21 @@
-A lot of Stuff,Tonalism,Coyote,Cubism,Picnic,Listening To Music,Color Pencil,Cool Colors
-Llama Challenge,Dystopian Future,Frisbee,Temple,Bear,Washed Out
-Torpedo Challenge,Party,Medieval Period
-A lot of Stuff,Horse,Hot Springs,Ancient History,Kickboxing,Tiger,Future,Synchromism
-Llama Challenge,Victorian Era,Field,Raccoon,Yellow,News Anchor
-Llama Challenge,Hoarder Room,Red,Fauvism,Fog,African Wild Dog
-Llama Challenge,Koala,Fauvism,Blue,Daybreak,Space
-Llama Challenge,Barn,Bountiful Overgrown Future,Selling Goods,Glow In The Dark,Caribou
-Torpedo Challenge,Djing,Llama
-Test Challenge,Early Morning,Art Deco,Panda,Bathing
-Llama Challenge,Glitter,Baking,Evening,Donkey,Temple
-Test Challenge,Future,Griffin,Gray,Green
-Test Challenge,Watercolor,Early Morning,Skunk,Karaoke
-Llama Challenge,Protogen,Flying,Red,Suprematism,Atomic Age
-Test Challenge,Ancient History,Natural Disaster,Classic Antiquity,Street Art
-Test Challenge,Kangaroo,Glow In The Dark,Psychedelic Art,Falcon
-Llama Challenge,Gecko,Future,Party,Smithing,Painted
-Test Challenge,Caribou,Floating,Skunk,Ink
-Test Challenge,Monochrome,Minimalism,Patterned,Psychedelic Art
-A lot of Stuff,Super Flat,Surrealism,Dark,Afternoon,Iridescent,African Wild Dog,Expressionism
-19
+A lot of Stuff,Gold,Class,Patterned,Synchromism,Atomic Age,Hoarder Room,Cat
+Basic Challenge,Color Pencil,Gas Station,Sunset,Impressionism
+Llama Challenge,Fauvism,Robots,Snake,Two Tone,Space Age
+Llama Challenge,Arctic Fox,Bowling Alley,Four Colors,Retro Future,Horseback Riding
+Llama Challenge,Selling Goods,Glitch Art,Future,Sheep,Four Colors
+Torpedo Challenge,Gold,Dog
+Test Challenge,Goat,Crayon,Vibrant,Arctic Fox
+Torpedo Challenge,Synchromism,Cat
+A lot of Stuff,Listening To Music,Art From Around The World,Protogen,Kitchen,Zebra,Guard,Bright
+Llama Challenge,Jaguar,Black And White,Medieval Period,Curling,Hot Springs
+Llama Challenge,Complementary Colors,Sculpture,Dystopian Future,Explosion,Mountain
+Torpedo Challenge,Porcupine,Fishing
+A lot of Stuff,Hellhound,Skunk,Pop Art,Hamster,Golden Age Of Piracy,Ancient Art,Evening
+Basic Challenge,Golden Age Of Piracy,Shapes,Indoors,Sculpting
+Llama Challenge,Drawing,Complementary Colors,Shapes,Cliffs,Retro Future
+Basic Challenge,Sunset,Four Colors,Kitchen,Hiking
+Llama Challenge,Orange,Crusades,Color Pencil,Relaxing,Underground Lake
+Basic Challenge,Corn Field,Fencing,Corn Field,Space
+A lot of Stuff,Watercolor,Fireside,Muted,Three Colors,Complementary Colors,Victorian Era,Indoors
+A lot of Stuff,Camping,Iridescent,Renaissance,Hoarder Room,Hellhound,Yellow,Darkness
+3
